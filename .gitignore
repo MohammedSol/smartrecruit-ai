@@ -1,0 +1,192 @@
+# ==============================================================================
+#  SmartRecruit AI — .gitignore
+#  Stack : Python 3.11 | Docker | Kafka | MongoDB | ChromaDB | Streamlit
+#  Règle d'or : Ne jamais commiter de secrets, de données brutes ou de binaires.
+# ==============================================================================
+
+
+# --------------------------------------------------------------------------- #
+#  SECRETS & CONFIGURATION SENSIBLE                                            #
+#  Ces fichiers contiennent des clés API, mots de passe, URIs de connexion.   #
+#  Une fuite sur GitHub = compromission immédiate.                             #
+# --------------------------------------------------------------------------- #
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+secrets/
+
+
+# --------------------------------------------------------------------------- #
+#  ENVIRONNEMENT VIRTUEL PYTHON                                                #
+#  Doit être reconstruit depuis requirements.txt — jamais versionné.          #
+# --------------------------------------------------------------------------- #
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+
+# --------------------------------------------------------------------------- #
+#  CACHES & ARTEFACTS PYTHON                                                   #
+#  Générés à la volée par l'interpréteur — spécifiques à la machine locale.  #
+# --------------------------------------------------------------------------- #
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+*.so
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+
+# --------------------------------------------------------------------------- #
+#  DONNÉES BRUTES & MASSIVES                                                   #
+#  Les datasets Kaggle (CSV, JSON volumineux) ne doivent pas être versionnés. #
+#  Utiliser un Data Registry (DVC, Hugging Face Datasets) pour les gros sets. #
+# --------------------------------------------------------------------------- #
+
+# Données sources brutes (fichiers CSV Kaggle, archives)
+data/raw/
+data/archives_faker/
+data/generated/
+
+# Autoriser les petits JSON de test (< 2 Ko chacun, schéma validé)
+# data/sample_cvs/ est versionné pour que les deux binômes aient les mêmes
+# données de test sans relancer le générateur.
+!data/sample_cvs/
+!data/sample_cvs/*.json
+
+
+# --------------------------------------------------------------------------- #
+#  BASES DE DONNÉES & VOLUMES LOCAUX                                           #
+#  Données persistantes des conteneurs Docker — propres à chaque machine.     #
+# --------------------------------------------------------------------------- #
+
+# Volume MongoDB (docker-compose named volume dumpé localement si applicable)
+mongo-data/
+mongo-data*/
+
+# Base vectorielle ChromaDB (in-process, régénérée depuis le pipeline)
+chroma_data/
+chroma_data*/
+
+# Données SQLite / autres BDD locales éventuelles
+*.db
+*.sqlite
+*.sqlite3
+
+
+# --------------------------------------------------------------------------- #
+#  DOCKER                                                                      #
+#  Les overrides locaux ne doivent pas écraser la config partagée.            #
+# --------------------------------------------------------------------------- #
+docker-compose.override.yml
+docker-compose.local.yml
+.docker/
+
+
+# --------------------------------------------------------------------------- #
+#  MODÈLES & ARTEFACTS ML                                                      #
+#  Les modèles pré-entraînés sont téléchargés (Hugging Face cache) —          #
+#  trop volumineux pour Git. Utiliser DVC ou le Model Hub.                    #
+# --------------------------------------------------------------------------- #
+
+# Cache Hugging Face / sentence-transformers
+.cache/
+~/.cache/huggingface/
+models/
+*.bin
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+mlruns/
+mlflow/
+
+
+# --------------------------------------------------------------------------- #
+#  IDE & ÉDITEURS                                                              #
+# --------------------------------------------------------------------------- #
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim / Emacs
+*.swp
+*.swo
+*~
+\#*\#
+.\#*
+
+# Jupyter Notebooks — checkpoints automatiques
+.ipynb_checkpoints/
+*.ipynb
+
+
+# --------------------------------------------------------------------------- #
+#  SYSTÈME D'EXPLOITATION                                                      #
+# --------------------------------------------------------------------------- #
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*.lock~
+
+
+# --------------------------------------------------------------------------- #
+#  LOGS & FICHIERS TEMPORAIRES                                                 #
+# --------------------------------------------------------------------------- #
+logs/
+*.log
+*.log.*
+tmp/
+temp/
+.tmp/
+*.tmp
+*.bak
+*.backup
+
+
+# --------------------------------------------------------------------------- #
+#  RAPPORT & COUVERTURE DE TESTS                                               #
+# --------------------------------------------------------------------------- #
+.coverage
+coverage.xml
+nosetests.xml
+test-results/
+reports/

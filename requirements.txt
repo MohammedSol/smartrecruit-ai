@@ -1,0 +1,79 @@
+# ==============================================================================
+#  SmartRecruit AI — Dépendances Python
+#  Phase 0 : Fondations — Environnement verrouillé
+#
+#  Installation : pip install -r requirements.txt
+#  Prérequis    : Python 3.10+ | Environnement virtuel .venv activé
+# ==============================================================================
+
+
+# ------------------------------------------------------------------------------
+#  BLOC 1 — Streaming & Ingestion (Pipeline Kafka)
+#  Rôle dans l'architecture : Le Producer publie les CV JSON sur le topic Kafka.
+#  Le Consumer lit le topic et déclenche le pipeline de traitement aval.
+# ------------------------------------------------------------------------------
+kafka-python
+
+
+# ------------------------------------------------------------------------------
+#  BLOC 2 — Stockage Documentaire (MongoDB)
+#  Rôle dans l'architecture : Persistance des CV complets (format JSON/BSON).
+#  Chaque document = 1 CV. Interrogé par le RAG pour retourner les profils
+#  complets après la recherche sémantique dans ChromaDB.
+# ------------------------------------------------------------------------------
+pymongo
+
+
+# ------------------------------------------------------------------------------
+#  BLOC 3 — Base Vectorielle (ChromaDB)
+#  Rôle dans l'architecture : Stockage et recherche des embeddings de CV.
+#  Utilisé en mode in-process (pas de serveur séparé). Les données sont
+#  persistées localement dans le dossier défini par CHROMA_PERSIST_DIR.
+# ------------------------------------------------------------------------------
+chromadb
+
+
+# ------------------------------------------------------------------------------
+#  BLOC 4 — Embeddings & Modèles NLP (sentence-transformers)
+#  Rôle dans l'architecture : Transforme les chunks de texte (sections de CV)
+#  en vecteurs numériques. Modèle cible : all-MiniLM-L6-v2 (vitesse/qualité).
+#  torch est le backend de calcul tenseur requis par sentence-transformers.
+# ------------------------------------------------------------------------------
+sentence-transformers
+torch
+
+
+# ------------------------------------------------------------------------------
+#  BLOC 5 — Pipeline RAG & Orchestration (LangChain)
+#  Rôle dans l'architecture : Assemble le pipeline Retrieve → Augment → Generate.
+#  Gère les connecteurs ChromaDB/MongoDB, les templates de prompts, et l'appel
+#  au LLM (Ollama, OpenAI ou Groq selon le choix fait en Phase 3).
+# ------------------------------------------------------------------------------
+langchain
+
+
+# ------------------------------------------------------------------------------
+#  BLOC 6 — Interface Utilisateur (Streamlit)
+#  Rôle dans l'architecture : Application web du recruteur. Expose un champ
+#  de recherche libre, appelle le pipeline RAG et affiche les profils
+#  correspondants sous forme de cartes résultat.
+# ------------------------------------------------------------------------------
+streamlit
+
+
+# ------------------------------------------------------------------------------
+#  BLOC 7 — Configuration & Variables d'Environnement (python-dotenv)
+#  Rôle dans l'architecture : Chargement du fichier .env dans config/settings.py.
+#  Centralise TOUTES les variables (URLs, ports, noms de BDD, modèles) en un
+#  seul point d'entrée — aucun os.getenv() éparpillé dans le projet.
+# ------------------------------------------------------------------------------
+python-dotenv
+
+
+# ------------------------------------------------------------------------------
+#  BLOC 8 — Génération de Données de Test (Faker)
+#  Rôle dans l'architecture : Utilisé UNIQUEMENT dans scripts/generate_fake_cvs.py
+#  pour produire 50-100 CV JSON réalistes (noms, emails, compétences, expériences)
+#  afin d'alimenter le pipeline durant le développement et les tests.
+# ------------------------------------------------------------------------------
+Faker

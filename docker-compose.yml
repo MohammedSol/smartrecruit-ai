@@ -1,0 +1,150 @@
+# ==============================================================================
+#  SmartRecruit AI — Infrastructure Docker
+#  Phase 0 : Fondations
+#
+#  Services :
+#    - zookeeper  : Gestionnaire de cluster Kafka        (port 2181)
+#    - kafka      : Broker de messages pour l'ingestion  (port 9092)
+#    - mongodb    : Stockage documentaire des CV         (port 27017)
+#
+#  Réseau commun : smartrecruit-net
+#  Lancement     : docker compose up -d
+#  Arrêt         : docker compose down
+# ==============================================================================
+
+
+
+# --------------------------------------------------------------------------- #
+#  Réseau interne partagé par tous les services                                #
+# --------------------------------------------------------------------------- #
+networks:
+  smartrecruit-net:
+    driver: bridge
+
+# --------------------------------------------------------------------------- #
+#  Volume persistant pour MongoDB                                              #
+#  Les données survivent aux redémarrages du conteneur                        #
+# --------------------------------------------------------------------------- #
+volumes:
+  mongo-data:
+
+# --------------------------------------------------------------------------- #
+#  Services                                                                    #
+# --------------------------------------------------------------------------- #
+services:
+
+  # ── Zookeeper ─────────────────────────────────────────────────────────────
+  # Kafka (pré-KRaft) s'appuie sur Zookeeper pour la gestion du cluster,
+  # l'élection du leader et la configuration des topics.
+  # Pour un PFA, une seule instance Zookeeper suffit.
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: smartrecruit-zookeeper
+    hostname: zookeeper
+    restart: unless-stopped
+
+    environment:
+      # Identifiant unique de ce nœud Zookeeper dans l'ensemble (cluster)
+      ZOOKEEPER_CLIENT_PORT: 2181
+      # Durée d'un "tick" en millisecondes (unité de base pour les timeouts)
+      ZOOKEEPER_TICK_TIME: 2000
+
+    ports:
+      # Expose Zookeeper sur la machine hôte (utile pour les outils d'admin)
+      - "2181:2181"
+
+    networks:
+      - smartrecruit-net
+
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "2181"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  # ── Kafka Broker ──────────────────────────────────────────────────────────
+  # Le broker reçoit les messages (CV JSON) du Producer et les distribue
+  # aux Consumers. Un seul broker suffit pour le développement local.
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: smartrecruit-kafka
+    hostname: kafka
+    restart: unless-stopped
+
+    # Kafka doit attendre que Zookeeper soit prêt avant de démarrer
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+
+    environment:
+      # Adresse de Zookeeper — utilise le nom du service Docker (résolution DNS interne)
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+      # Listeners : deux points d'écoute
+      #   - PLAINTEXT_INTERNAL : pour la communication entre conteneurs Docker
+      #   - PLAINTEXT_EXTERNAL : pour les scripts Python sur la machine hôte (localhost)
+      KAFKA_LISTENERS: PLAINTEXT_INTERNAL://0.0.0.0:29092,PLAINTEXT_EXTERNAL://0.0.0.0:9092
+
+      # Adresses annoncées aux clients selon leur protocole
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT_INTERNAL://kafka:29092,PLAINTEXT_EXTERNAL://localhost:9092
+
+      # Mapping protocole → listener
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT_INTERNAL:PLAINTEXT,PLAINTEXT_EXTERNAL:PLAINTEXT
+
+      # Le listener utilisé pour la communication inter-brokers (interne)
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+
+      # Facteur de réplication : 1 seul broker en dev, donc 1 seule réplique
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+      # Crée automatiquement les topics à la première publication
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+
+    ports:
+      # 9092 : port exposé à la machine hôte → utilisé par vos scripts Python
+      - "9092:9092"
+
+    networks:
+      - smartrecruit-net
+
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # ── MongoDB ───────────────────────────────────────────────────────────────
+  # Stockage documentaire (NoSQL) des CV complets au format JSON/BSON.
+  # Chaque CV = 1 document dans la collection "cvs" de la BDD "smartrecruit".
+  mongodb:
+    image: mongo:7.0
+    container_name: smartrecruit-mongodb
+    hostname: mongodb
+    restart: unless-stopped
+
+    environment:
+      # MONGO_INITDB_ROOT_* remplacé par un script JS d'init explicite (plus fiable)
+      MONGO_INITDB_DATABASE: smartrecruit
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      # Volume nommé : persistance des données
+      - mongo-data:/data/db
+      # Script JS exécuté automatiquement au premier démarrage (volume vierge)
+      # MongoDB lance tous les .js présents dans /docker-entrypoint-initdb.d/
+      - ./mongo-init:/docker-entrypoint-initdb.d:ro
+
+    networks:
+      - smartrecruit-net
+
+    healthcheck:
+      test: ["CMD", "mongosh", "-u", "admin", "-p", "smartrecruit2026", "--authenticationDatabase", "admin", "--eval", "db.adminCommand('ping')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
