@@ -64,8 +64,8 @@ CHROMA_COLLECTION: str = os.getenv("CHROMA_COLLECTION", "cv_embeddings")
 #  BLOC 4 — Modèle d'embedding (sentence-transformers)                        #
 # --------------------------------------------------------------------------- #
 
-# all-MiniLM-L6-v2 : bon équilibre vitesse / qualité (384 dimensions)
-EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+# paraphrase-multilingual-MiniLM-L12-v2 : modele multilingue (FR/EN/AR...) — Phase 3
+EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "paraphrase-multilingual-MiniLM-L12-v2")
 
 
 # --------------------------------------------------------------------------- #
@@ -75,8 +75,8 @@ EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
 # Fournisseur LLM : "groq" | "openai" | "ollama"
 LLM_PROVIDER: str = os.getenv("LLM_PROVIDER", "groq")
 
-# Modèle Groq : "llama3-8b-8192" | "mixtral-8x7b-32768"
-LLM_MODEL: str = os.getenv("LLM_MODEL", "llama3-8b-8192")
+# Modele Groq actif : "llama-3.3-70b-versatile" (successeur de llama3-70b-8192, decommisionne)
+LLM_MODEL: str = os.getenv("LLM_MODEL", "llama-3.3-70b-versatile")
 
 # Clé API Groq (obligatoire en Phase 3)
 GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")

@@ -49,9 +49,9 @@
 
 | Composant | Choix technique | Détail |
 |---|---|---|
-| **Modèle d'embedding** | `all-MiniLM-L6-v2` | Via `sentence-transformers`. Vecteurs de 384 dimensions. Bon équilibre vitesse/qualité. |
-| **Orchestration RAG** | `LangChain` | Gère le pipeline Retrieve → Augment → Generate. Connecteurs ChromaDB, MongoDB et Groq. |
-| **LLM Provider** | **API Groq** | Gratuit en tier libre, très rapide. Modèles : `llama3-8b-8192` ou `mixtral-8x7b-32768`. Clé dans `.env` (`GROQ_API_KEY`). |
+| **Modèle d'embedding** | `paraphrase-multilingual-MiniLM-L12-v2` | Via `sentence-transformers`. Vecteurs de 384 dimensions. Modèle **multilingue** (FR/EN/AR/etc.) — remplace `all-MiniLM-L6-v2` après validation du problème cross-lingual. |
+| **Orchestration RAG** | `LangChain` + **GraphRAG** | Pipeline Retrieve → Augment → Generate. Architecture Hybrid GraphRAG (pattern Microsoft Research). |
+| **LLM Provider** | **API Groq** | Gratuit en tier libre, très rapide. Modèle : `llama3-70b-8192`. Clé dans `.env` (`GROQ_API_KEY`). |
 | **Vectorisation** | `sentence-transformers` + `torch` | Backend PyTorch (CPU). Pas de GPU requis pour ce projet. |
 
 ### 2.5 Front-end
@@ -80,23 +80,34 @@ smartrecruit-ai/
 │   └── settings.py             ← SINGLE SOURCE OF TRUTH — Toutes les constantes
 │
 ├── data/
-│   ├── sample_cvs/             ← CVs JSON générés par Faker (tests)
-│   └── generated/              ← Données intermédiaires (NON versionné)
+│   ├── sample_cvs/             ← CVs JSON générés (tests)
+│   └── raw/                    ← Dataset Kaggle brut (NON versionné)
 │
 ├── ingestion/
 │   ├── __init__.py
 │   ├── producer.py             ← Lit les CVs JSON → publie sur Kafka topic
-│   └── consumer.py             ← Consomme Kafka → stocke Mongo → vectorise ChromaDB
+│   └── consumer.py             ← Consomme Kafka → Mongo → ChromaDB (Phase 1+2)
 │
 ├── processing/
 │   ├── __init__.py
 │   ├── chunking.py             ← Découpe un CV JSON en sections textuelles
-│   └── embeddings.py           ← Génère les vecteurs via sentence-transformers
+│   └── embeddings.py           ← Génère les vecteurs (multilingue, 384 dims)
+│
+├── generation/                 ← [NOUVEAU Phase 3] Couche LLM
+│   ├── __init__.py
+│   └── llm_client.py           ← Client Groq (generate_text + extract_json)
+│
+├── graph/                      ← [NOUVEAU Phase 3] Pipeline GraphRAG
+│   ├── __init__.py
+│   ├── entity_extractor.py     ← LLM → entités/relations JSON depuis MongoDB
+│   ├── graph_builder.py        ← Construit le graphe NetworkX (in-memory)
+│   ├── community_detector.py   ← Détecte les communautés (Louvain/Leiden)
+│   └── community_summarizer.py ← LLM → résumé de chaque communauté
 │
 ├── rag/
 │   ├── __init__.py
 │   ├── retriever.py            ← Cherche dans ChromaDB → récupère dans Mongo
-│   ├── chain.py                ← Pipeline LangChain (Retriever → Prompt → Groq)
+│   ├── chain.py                ← Pipeline hybride (vectoriel + graphe)
 │   └── prompts.py              ← Templates de prompts structurés
 │
 ├── storage/
@@ -107,10 +118,13 @@ smartrecruit-ai/
 ├── interface/
 │   ├── app.py                  ← Application Streamlit principale
 │   └── components/
-│       └── result_card.py      ← Carte profil HTML/CSS (score, skills, synthèse IA)
+│       └── result_card.py      ← Carte profil HTML/CSS
 │
 ├── scripts/
-│   └── generate_fake_cvs.py    ← Génère 50-100 CVs JSON avec Faker
+│   ├── generate_fake_cvs.py
+│   ├── prepare_kaggle_data.py
+│   ├── audit_chroma.py         ← Diagnostic READ-ONLY ChromaDB
+│   └── test_chroma_search.py   ← Test interactif recherche semantique
 │
 ├── tests/
 │   ├── test_embeddings.py
@@ -142,11 +156,11 @@ CHROMA_PERSIST_DIR=./chroma_data
 CHROMA_COLLECTION=cv_embeddings
 
 # --- Embeddings ---
-EMBEDDING_MODEL=all-MiniLM-L6-v2
+EMBEDDING_MODEL=paraphrase-multilingual-MiniLM-L12-v2
 
 # --- LLM (Groq) ---
 LLM_PROVIDER=groq
-LLM_MODEL=llama3-8b-8192
+LLM_MODEL=llama3-70b-8192
 GROQ_API_KEY=gsk_...
 
 # --- Streamlit ---
@@ -217,64 +231,122 @@ Ces règles sont **non négociables** pour toutes les sessions de développement
 
 ## 6. Roadmap d'Implémentation
 
-### Phase 0 — Fondations & Données Factices ✅ VALIDÉE
+### Phase 0 — Fondations & Données ✅ VALIDEE
 
 | Sous-étape | Statut | Livrable |
 |---|---|---|
-| Arborescence complète du projet | ✅ | Tous les dossiers et fichiers vides créés |
-| `docker-compose.yml` (Kafka KRaft + MongoDB) | ✅ | 2 conteneurs `Healthy` sur `smartrecruit-net` |
-| Environnement Python 3.11 + `.venv` | ✅ | 9 packages installés, venv Windows natif |
+| Arborescence complète du projet | ✅ | Tous les dossiers et fichiers créés |
+| `docker-compose.yml` (Kafka KRaft + MongoDB) | ✅ | 2 conteneurs `Healthy` |
+| Environnement Python 3.11 + `.venv` | ✅ | Venv Windows natif |
 | `config/settings.py` | ✅ | Chargement centralisé validé |
-| `scripts/generate_fake_cvs.py` | ⏳ | 50-100 CVs JSON dans `data/sample_cvs/` |
-
-**Critère de sortie Phase 0** : Les fichiers JSON générés sont lisibles et conformes au schéma canonique (R4).
+| `scripts/prepare_kaggle_data.py` | ✅ | 50 CVs JSON dans `data/sample_cvs/` |
 
 ---
 
-### Phase 1 — Pipeline de Données (Ingestion) ⬜ À VENIR
+### Phase 1 — Pipeline de Données (Ingestion) ✅ VALIDEE
 
 **Objectif** : Faire circuler un CV JSON de son fichier source jusqu'à MongoDB, via Kafka.
 
 | Sous-étape | Statut | Livrable |
 |---|---|---|
-| `scripts/prepare_kaggle_data.py` — ETL CSV → JSON | ⬜ | CVs nettoyés et normalisés |
-| `ingestion/producer.py` — Kafka Producer | ⬜ | Publie les CVs JSON sur le topic `cv-ingestion` |
-| `ingestion/consumer.py` — Kafka Consumer | ⬜ | Consomme et persiste les CVs dans MongoDB |
+| `ingestion/producer.py` | ✅ | Publie 50 CVs sur le topic `cv_ingestion` |
+| `ingestion/consumer.py` | ✅ | Consomme et persiste les CVs dans MongoDB (upsert idempotent) |
 
-**Critère de validation** : 2 terminaux en parallèle (Producer + Consumer). Vérification visuelle des documents dans MongoDB Compass.
+**Critère validé** : 50 CVs dans MongoDB, pipeline Producer → Consumer fonctionnel.
 
 ---
 
-### Phase 2 — Vectorisation (Moteur de Recherche) ⬜ À VENIR
+### Phase 2 — Vectorisation (Moteur de Recherche) ✅ VALIDEE
 
 **Objectif** : Transformer chaque CV en vecteurs sémantiques indexés dans ChromaDB.
 
 | Sous-étape | Statut | Livrable |
 |---|---|---|
-| `processing/chunking.py` — Découpage sémantique | ⬜ | CV découpé en sections (expérience, formation, compétences) |
-| `processing/embeddings.py` — Vectorisation | ⬜ | Vecteurs 384 dimensions via `all-MiniLM-L6-v2` |
-| `storage/chroma_client.py` — Indexation | ⬜ | Chunks + métadonnées stockés dans ChromaDB |
-| Intégration dans `consumer.py` | ⬜ | Après insert Mongo → chunking → embedding → ChromaDB |
+| `processing/chunking.py` | ✅ | Découpage par `RecursiveCharacterTextSplitter` |
+| `processing/embeddings.py` | ✅ | Singleton EmbeddingModel — 384 dimensions |
+| `storage/chroma_client.py` | ✅ | Upsert idempotent, distance cosinus |
+| Intégration dans `consumer.py` | ✅ | Phase 1 + Phase 2 dans la même boucle |
+| Upgrade modèle multilingue | ✅ | `paraphrase-multilingual-MiniLM-L12-v2` |
+| `scripts/test_chroma_search.py` | ✅ | Recherche interactive validée (FR + EN) |
 
-**Critère de validation** : Script terminal effectuant une requête et retournant le **Top 3 des chunks** les plus proches via distance Cosinus.
+**Critère validé** : 100 chunks indexés (384 dims). Recherche EN → 63%+ de similarité.
 
 ---
 
-### Phase 3 — Moteur RAG (L'Intelligence) ⬜ À VENIR
+### Phase 3 — Hybrid GraphRAG (L'Intelligence Structurelle) 🔄 EN COURS
 
-**Objectif** : Connecter la recherche sémantique à un LLM (Groq) via LangChain.
+**Objectif** : Dépasser la simple recherche vectorielle en construisant une connaissance structurée
+du marché des talents sous forme de graphe de connaissances.
+
+#### Decision architecturale : Pattern Microsoft GraphRAG
+
+Notre Phase 3 adopte une architecture **Hybrid GraphRAG** inspirée des travaux de Microsoft Research
+(Edge et al., 2024). Elle repose sur la séparation de deux flux complémentaires :
+
+| Flux | Mode | Rôle |
+|---|---|---|
+| **Pipeline Vectoriel** (Phase 2) | Temps réel (streaming Kafka) | Recherche rapide par similarité sémantique — reste intact |
+| **Batch Job GraphRAG** (Phase 3) | Asynchrone (déclenché manuellement) | Extraction de connaissance structurée depuis MongoDB |
+
+#### Fonctionnement du Batch Job
+
+```
+MongoDB (CVs bruts)
+    |
+    v
+[1] entity_extractor.py
+    LLM (Groq llama3-70b) --> {entities: [...], relations: [...]}
+    |
+    v
+[2] graph_builder.py
+    NetworkX DiGraph (in-memory)
+    Noeuds : candidats, competences, entreprises, secteurs
+    Aretes : travaille_avec, possede_competence, experience_dans
+    |
+    v
+[3] community_detector.py
+    Algorithme Louvain/Leiden
+    --> Communautes semantiques (ex: "cluster Data Science", "cluster Sante")
+    |
+    v
+[4] community_summarizer.py
+    LLM --> Resume textuel de chaque communaute
+    |
+    v
+[5] ChromaDB (nouvelle collection : "community_summaries")
+    Vecteurs des resumes -> recherche globale multi-CV
+```
+
+#### Pourquoi cette architecture ?
+
+- **Recherche vectorielle seule** : bonne pour retrouver des chunks similaires
+  mais aveugle aux relations entre profils (ex: "qui a travaillé avec des data engineers ?").
+- **GraphRAG** : permet des requêtes globales (*"Quel est le profil type du cluster Data Science ?"*)
+  impossibles avec une simple distance cosinus.
+- **Hybride** : les deux modes coexistent — le retriever choisit la stratégie selon la requête.
+
+#### Nouvelle collection ChromaDB
+
+| Collection | Contenu | Usage |
+|---|---|---|
+| `cv_embeddings` | Chunks individuels des CVs (Phase 2) | Requêtes locales — profil par profil |
+| `community_summaries` | Résumés LLM des communautés NetworkX | Requêtes globales — vue d'ensemble du marché |
 
 | Sous-étape | Statut | Livrable |
 |---|---|---|
-| `rag/retriever.py` — Retriever hybride | ⬜ | Cherche IDs dans ChromaDB → tire profils complets de MongoDB |
-| `rag/prompts.py` — Templates de prompts | ⬜ | Prompts structurés pour l'analyse de profils recrutement |
-| `rag/chain.py` — Pipeline LangChain + Groq | ⬜ | Chaîne Retriever → Prompt → LLM → Réponse |
+| `generation/llm_client.py` — Client Groq | 🔄 | `generate_text()` + `extract_json()` |
+| `graph/entity_extractor.py` — Extraction d'entités | ⬜ | JSON structuré entités/relations par CV |
+| `graph/graph_builder.py` — Construction NetworkX | ⬜ | DiGraph peuplé depuis MongoDB |
+| `graph/community_detector.py` — Détection communautés | ⬜ | Clusters sémantiques identifiés |
+| `graph/community_summarizer.py` — Résumés LLM | ⬜ | Textes de synthèse par communauté |
+| Indexation `community_summaries` dans ChromaDB | ⬜ | 2ème collection vectorielle opérationnelle |
 
-**Critère de validation** : Script Q&A terminal — requête complexe (ex: *"Trouve un data engineer avec Spark et 3 ans d'expérience"*) → réponse LLM cohérente, sourcée, et citant les profils trouvés.
+**Critère de validation** : Requête globale (*"Décris le profil type d'un expert en cybersécurité"*)
+retournant une synthèse LLM basée sur les résumés de communautés.
 
 ---
 
-### Phase 4 — Interface B2B (Streamlit UI) ⬜ À VENIR
+### Phase 4 — Interface B2B (Streamlit UI) ⬜ A VENIR
 
 **Objectif** : Dashboard professionnel permettant la recherche en langage naturel.
 
@@ -328,4 +400,4 @@ docker compose down
 
 ---
 
-*Dernière mise à jour : Phase 0 complète. Prochaine étape : `scripts/generate_fake_cvs.py`.*
+*Dernière mise à jour : Phase 3 démarrée — Hybrid GraphRAG. `generation/llm_client.py` en cours.*

@@ -1,0 +1,2115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d2" for="edge" attr.name="relation" attr.type="string" />
+  <key id="d1" for="node" attr.name="label" attr.type="string" />
+  <key id="d0" for="node" attr.name="type" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="daisuke_mori">
+      <data key="d0">Candidat</data>
+      <data key="d1">Daisuke Mori</data>
+    </node>
+    <node id="fitness_coach">
+      <data key="d0">Poste</data>
+      <data key="d1">Fitness Coach</data>
+    </node>
+    <node id="injury_prevention">
+      <data key="d0">Competence</data>
+      <data key="d1">Injury Prevention</data>
+    </node>
+    <node id="motivation">
+      <data key="d0">Competence</data>
+      <data key="d1">Motivation</data>
+    </node>
+    <node id="nutrition">
+      <data key="d0">Competence</data>
+      <data key="d1">Nutrition</data>
+    </node>
+    <node id="health_coaching">
+      <data key="d0">Competence</data>
+      <data key="d1">Health Coaching</data>
+    </node>
+    <node id="strength_training">
+      <data key="d0">Competence</data>
+      <data key="d1">Strength Training</data>
+    </node>
+    <node id="certified_personal_trainer">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Personal Trainer</data>
+    </node>
+    <node id="taichi_shimizu">
+      <data key="d0">Candidat</data>
+      <data key="d1">Taichi Shimizu</data>
+    </node>
+    <node id="physician">
+      <data key="d0">Poste</data>
+      <data key="d1">Physician</data>
+    </node>
+    <node id="healthcare">
+      <data key="d0">Competence</data>
+      <data key="d1">Healthcare</data>
+    </node>
+    <node id="pharmacology">
+      <data key="d0">Competence</data>
+      <data key="d1">Pharmacology</data>
+    </node>
+    <node id="medical_terminology">
+      <data key="d0">Competence</data>
+      <data key="d1">Medical Terminology</data>
+    </node>
+    <node id="patient_care">
+      <data key="d0">Competence</data>
+      <data key="d1">Patient Care</data>
+    </node>
+    <node id="surgical_skills">
+      <data key="d0">Competence</data>
+      <data key="d1">Surgical Skills</data>
+    </node>
+    <node id="advanced_cardiovascular_life_support">
+      <data key="d0">Competence</data>
+      <data key="d1">Advanced Cardiovascular Life Support</data>
+    </node>
+    <node id="sarah_martin">
+      <data key="d0">Candidat</data>
+      <data key="d1">Sarah Martin</data>
+    </node>
+    <node id="financial_analyst">
+      <data key="d0">Poste</data>
+      <data key="d1">Financial Analyst</data>
+    </node>
+    <node id="forecasting">
+      <data key="d0">Competence</data>
+      <data key="d1">Forecasting</data>
+    </node>
+    <node id="financial_modelling">
+      <data key="d0">Competence</data>
+      <data key="d1">Financial Modelling</data>
+    </node>
+    <node id="excel">
+      <data key="d0">Competence</data>
+      <data key="d1">Excel</data>
+    </node>
+    <node id="budgeting">
+      <data key="d0">Competence</data>
+      <data key="d1">Budgeting</data>
+    </node>
+    <node id="market_research">
+      <data key="d0">Competence</data>
+      <data key="d1">Market Research</data>
+    </node>
+    <node id="certified_investment_management_analyst">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Investment Management Analyst (CIMA)</data>
+    </node>
+    <node id="keith_hughes">
+      <data key="d0">Candidat</data>
+      <data key="d1">Keith Hughes</data>
+    </node>
+    <node id="supply_chain_manager">
+      <data key="d0">Poste</data>
+      <data key="d1">Supply Chain Manager</data>
+    </node>
+    <node id="supply_chain_optimization">
+      <data key="d0">Competence</data>
+      <data key="d1">Supply Chain Optimization</data>
+    </node>
+    <node id="risk_management">
+      <data key="d0">Competence</data>
+      <data key="d1">Risk Management</data>
+    </node>
+    <node id="logistics">
+      <data key="d0">Competence</data>
+      <data key="d1">Logistics</data>
+    </node>
+    <node id="project_management">
+      <data key="d0">Competence</data>
+      <data key="d1">Project Management</data>
+    </node>
+    <node id="scpro_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">SCPro Certification</data>
+    </node>
+    <node id="james_davis">
+      <data key="d0">Candidat</data>
+      <data key="d1">James Davis</data>
+    </node>
+    <node id="negotiation">
+      <data key="d0">Competence</data>
+      <data key="d1">Negotiation</data>
+    </node>
+    <node id="procurement">
+      <data key="d0">Competence</data>
+      <data key="d1">Procurement</data>
+    </node>
+    <node id="lean_six_sigma_green_belt_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">Lean Six Sigma Green Belt Certification</data>
+    </node>
+    <node id="miku_matsuda">
+      <data key="d0">Candidat</data>
+      <data key="d1">Miku Matsuda</data>
+    </node>
+    <node id="database_administrator">
+      <data key="d0">Poste</data>
+      <data key="d1">Database Administrator</data>
+    </node>
+    <node id="optimization">
+      <data key="d0">Competence</data>
+      <data key="d1">Optimization</data>
+    </node>
+    <node id="cloud_databases">
+      <data key="d0">Competence</data>
+      <data key="d1">Cloud Databases</data>
+    </node>
+    <node id="sql">
+      <data key="d0">Competence</data>
+      <data key="d1">SQL</data>
+    </node>
+    <node id="database_management">
+      <data key="d0">Competence</data>
+      <data key="d1">Database Management</data>
+    </node>
+    <node id="performance_tuning">
+      <data key="d0">Competence</data>
+      <data key="d1">Performance Tuning</data>
+    </node>
+    <node id="azure_database_administrator_associate">
+      <data key="d0">Competence</data>
+      <data key="d1">Microsoft Certified: Azure Database Administrator Associate</data>
+    </node>
+    <node id="aaliyah_scott">
+      <data key="d0">Candidat</data>
+      <data key="d1">Aaliyah Scott</data>
+    </node>
+    <node id="architect">
+      <data key="d0">Poste</data>
+      <data key="d1">Architect</data>
+    </node>
+    <node id="3d_modeling">
+      <data key="d0">Competence</data>
+      <data key="d1">3D Modeling</data>
+    </node>
+    <node id="sustainable_design">
+      <data key="d0">Competence</data>
+      <data key="d1">Sustainable Design</data>
+    </node>
+    <node id="construction_management">
+      <data key="d0">Competence</data>
+      <data key="d1">Construction Management</data>
+    </node>
+    <node id="urban_planning">
+      <data key="d0">Competence</data>
+      <data key="d1">Urban Planning</data>
+    </node>
+    <node id="certified_interior_designer">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Interior Designer (CID)</data>
+    </node>
+    <node id="zara_scott">
+      <data key="d0">Candidat</data>
+      <data key="d1">Zara Scott</data>
+    </node>
+    <node id="operations_manager">
+      <data key="d0">Poste</data>
+      <data key="d1">Operations Manager</data>
+    </node>
+    <node id="leadership">
+      <data key="d0">Competence</data>
+      <data key="d1">Leadership</data>
+    </node>
+    <node id="supply_chain_management">
+      <data key="d0">Competence</data>
+      <data key="d1">Supply Chain Management</data>
+    </node>
+    <node id="customer_service">
+      <data key="d0">Competence</data>
+      <data key="d1">Customer Service</data>
+    </node>
+    <node id="holly_white">
+      <data key="d0">Candidat</data>
+      <data key="d1">Holly White</data>
+    </node>
+    <node id="troubleshooting">
+      <data key="d0">Competence</data>
+      <data key="d1">Troubleshooting</data>
+    </node>
+    <node id="data_security">
+      <data key="d0">Competence</data>
+      <data key="d1">Data Security</data>
+    </node>
+    <node id="database_design">
+      <data key="d0">Competence</data>
+      <data key="d1">Database Design</data>
+    </node>
+    <node id="comptia_data_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">CompTIA Data+ Certification</data>
+    </node>
+    <node id="ami_takahashi">
+      <data key="d0">Candidat</data>
+      <data key="d1">Ami Takahashi</data>
+    </node>
+    <node id="interior_design">
+      <data key="d0">Competence</data>
+      <data key="d1">Interior Design</data>
+    </node>
+    <node id="autocad">
+      <data key="d0">Competence</data>
+      <data key="d1">AutoCAD</data>
+    </node>
+    <node id="brian_king">
+      <data key="d0">Candidat</data>
+      <data key="d1">Brian King</data>
+    </node>
+    <node id="cybersecurity_analyst">
+      <data key="d0">Poste</data>
+      <data key="d1">Cybersecurity Analyst</data>
+    </node>
+    <node id="penetration_testing">
+      <data key="d0">Competence</data>
+      <data key="d1">Penetration Testing</data>
+    </node>
+    <node id="incident_response">
+      <data key="d0">Competence</data>
+      <data key="d1">Incident Response</data>
+    </node>
+    <node id="security_protocols">
+      <data key="d0">Competence</data>
+      <data key="d1">Security Protocols</data>
+    </node>
+    <node id="network_security">
+      <data key="d0">Competence</data>
+      <data key="d1">Network Security</data>
+    </node>
+    <node id="ethical_hacking">
+      <data key="d0">Competence</data>
+      <data key="d1">Ethical Hacking</data>
+    </node>
+    <node id="certified_information_security_manager">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Information Security Manager</data>
+    </node>
+    <node id="jonah_anderson">
+      <data key="d0">Candidat</data>
+      <data key="d1">Jonah Anderson</data>
+    </node>
+    <node id="software_engineer">
+      <data key="d0">Poste</data>
+      <data key="d1">Software Engineer</data>
+    </node>
+    <node id="software_development">
+      <data key="d0">Competence</data>
+      <data key="d1">Software Development</data>
+    </node>
+    <node id="java">
+      <data key="d0">Competence</data>
+      <data key="d1">Java</data>
+    </node>
+    <node id="python">
+      <data key="d0">Competence</data>
+      <data key="d1">Python</data>
+    </node>
+    <node id="c++">
+      <data key="d0">Competence</data>
+      <data key="d1">C++</data>
+    </node>
+    <node id="agile">
+      <data key="d0">Competence</data>
+      <data key="d1">Agile</data>
+    </node>
+    <node id="certified_kubernetes_administrator">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Kubernetes Administrator</data>
+    </node>
+    <node id="owen_campbell">
+      <data key="d0">Candidat</data>
+      <data key="d1">Owen Campbell</data>
+    </node>
+    <node id="policy_analysis">
+      <data key="d0">Competence</data>
+      <data key="d1">Policy Analysis</data>
+    </node>
+    <node id="gis">
+      <data key="d0">Competence</data>
+      <data key="d1">GIS</data>
+    </node>
+    <node id="community_engagement">
+      <data key="d0">Competence</data>
+      <data key="d1">Community Engagement</data>
+    </node>
+    <node id="urban_development">
+      <data key="d0">Competence</data>
+      <data key="d1">Urban Development</data>
+    </node>
+    <node id="urban_planner">
+      <data key="d0">Poste</data>
+      <data key="d1">Urban Planner</data>
+    </node>
+    <node id="hinata_sato">
+      <data key="d0">Candidat</data>
+      <data key="d1">Hinata Sato</data>
+    </node>
+    <node id="machine_learning_engineer">
+      <data key="d0">Poste</data>
+      <data key="d1">Machine Learning Engineer</data>
+    </node>
+    <node id="data_science">
+      <data key="d0">Competence</data>
+      <data key="d1">Data Science</data>
+    </node>
+    <node id="data_analysis">
+      <data key="d0">Competence</data>
+      <data key="d1">Data Analysis</data>
+    </node>
+    <node id="statistics">
+      <data key="d0">Competence</data>
+      <data key="d1">Statistics</data>
+    </node>
+    <node id="deep_learning">
+      <data key="d0">Competence</data>
+      <data key="d1">Deep Learning</data>
+    </node>
+    <node id="machine_learning_specialization">
+      <data key="d0">Competence</data>
+      <data key="d1">Machine Learning Specialization</data>
+    </node>
+    <node id="jada_williams">
+      <data key="d0">Candidat</data>
+      <data key="d1">Jada Williams</data>
+    </node>
+    <node id="personal_trainer">
+      <data key="d0">Poste</data>
+      <data key="d1">Personal Trainer</data>
+    </node>
+    <node id="fitness">
+      <data key="d0">Competence</data>
+      <data key="d1">Fitness</data>
+    </node>
+    <node id="anatomy">
+      <data key="d0">Competence</data>
+      <data key="d1">Anatomy</data>
+    </node>
+    <node id="exercise_planning">
+      <data key="d0">Competence</data>
+      <data key="d1">Exercise Planning</data>
+    </node>
+    <node id="functional_movement_systems_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">Functional Movement Systems (FMS) Certification</data>
+    </node>
+    <node id="elliot_moore">
+      <data key="d0">Candidat</data>
+      <data key="d1">Elliot Moore</data>
+    </node>
+    <node id="biomedical_engineer">
+      <data key="d0">Poste</data>
+      <data key="d1">Biomedical Engineer</data>
+    </node>
+    <node id="clinical_trials">
+      <data key="d0">Competence</data>
+      <data key="d1">Clinical Trials</data>
+    </node>
+    <node id="medical_devices">
+      <data key="d0">Competence</data>
+      <data key="d1">Medical Devices</data>
+    </node>
+    <node id="engineering">
+      <data key="d0">Competence</data>
+      <data key="d1">Engineering</data>
+    </node>
+    <node id="research">
+      <data key="d0">Competence</data>
+      <data key="d1">Research</data>
+    </node>
+    <node id="regulatory_compliance">
+      <data key="d0">Competence</data>
+      <data key="d1">Regulatory Compliance</data>
+    </node>
+    <node id="fundamentals_of_biomedical_engineering">
+      <data key="d0">Competence</data>
+      <data key="d1">Fundamentals of Biomedical Engineering</data>
+    </node>
+    <node id="yoshihiro_nakamura">
+      <data key="d0">Candidat</data>
+      <data key="d1">Yoshihiro Nakamura</data>
+    </node>
+    <node id="nurse">
+      <data key="d0">Poste</data>
+      <data key="d1">Nurse</data>
+    </node>
+    <node id="compassion">
+      <data key="d0">Competence</data>
+      <data key="d1">Compassion</data>
+    </node>
+    <node id="first_aid">
+      <data key="d0">Competence</data>
+      <data key="d1">First Aid</data>
+    </node>
+    <node id="cpr">
+      <data key="d0">Competence</data>
+      <data key="d1">CPR</data>
+    </node>
+    <node id="certified_nurse_assistant">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Nurse Assistant</data>
+    </node>
+    <node id="hazel_clark">
+      <data key="d0">Candidat</data>
+      <data key="d1">Hazel Clark</data>
+    </node>
+    <node id="systems_analyst">
+      <data key="d0">Poste</data>
+      <data key="d1">Systems Analyst</data>
+    </node>
+    <node id="systems_integration">
+      <data key="d0">Competence</data>
+      <data key="d1">Systems Integration</data>
+    </node>
+    <node id="business_process_modeling">
+      <data key="d0">Competence</data>
+      <data key="d1">Business Process Modeling</data>
+    </node>
+    <node id="azure_solutions_architect_expert">
+      <data key="d0">Competence</data>
+      <data key="d1">Microsoft Certified: Azure Solutions Architect Expert</data>
+    </node>
+    <node id="lauren_davis">
+      <data key="d0">Candidat</data>
+      <data key="d1">Lauren Davis</data>
+    </node>
+    <node id="vulnerability_analysis">
+      <data key="d0">Competence</data>
+      <data key="d1">Vulnerability Analysis</data>
+    </node>
+    <node id="risk_assessment">
+      <data key="d0">Competence</data>
+      <data key="d1">Risk Assessment</data>
+    </node>
+    <node id="certified_ethical_hacker">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Ethical Hacker</data>
+    </node>
+    <node id="jack_cooper">
+      <data key="d0">Candidat</data>
+      <data key="d1">Jack Cooper</data>
+    </node>
+    <node id="investment_analysis">
+      <data key="d0">Competence</data>
+      <data key="d1">Investment Analysis</data>
+    </node>
+    <node id="corporate_finance">
+      <data key="d0">Competence</data>
+      <data key="d1">Corporate Finance</data>
+    </node>
+    <node id="certified_financial_planner">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Financial Planner</data>
+    </node>
+    <node id="jaylen_morris">
+      <data key="d0">Candidat</data>
+      <data key="d1">Jaylen Morris</data>
+    </node>
+    <node id="product_manager">
+      <data key="d0">Poste</data>
+      <data key="d1">Product Manager</data>
+    </node>
+    <node id="product_development">
+      <data key="d0">Competence</data>
+      <data key="d1">Product Development</data>
+    </node>
+    <node id="cross_functional_collaboration">
+      <data key="d0">Competence</data>
+      <data key="d1">Cross-Functional Collaboration</data>
+    </node>
+    <node id="team_coordination">
+      <data key="d0">Competence</data>
+      <data key="d1">Team Coordination</data>
+    </node>
+    <node id="certified_product_marketing_manager">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Product Marketing Manager (CPMM)</data>
+    </node>
+    <node id="emiko_matsuda">
+      <data key="d0">Candidat</data>
+      <data key="d1">Emiko Matsuda</data>
+    </node>
+    <node id="content_writer">
+      <data key="d0">Poste</data>
+      <data key="d1">Content Writer</data>
+    </node>
+    <node id="creative_writing">
+      <data key="d0">Competence</data>
+      <data key="d1">Creative Writing</data>
+    </node>
+    <node id="blogging">
+      <data key="d0">Competence</data>
+      <data key="d1">Blogging</data>
+    </node>
+    <node id="editing">
+      <data key="d0">Competence</data>
+      <data key="d1">Editing</data>
+    </node>
+    <node id="communication">
+      <data key="d0">Competence</data>
+      <data key="d1">Communication</data>
+    </node>
+    <node id="content_marketing_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">Content Marketing Certification</data>
+    </node>
+    <node id="harumi_watanabe">
+      <data key="d0">Candidat</data>
+      <data key="d1">Harumi Watanabe</data>
+    </node>
+    <node id="client_motivation">
+      <data key="d0">Competence</data>
+      <data key="d1">Client Motivation</data>
+    </node>
+    <node id="goal_setting">
+      <data key="d0">Competence</data>
+      <data key="d1">Goal Setting</data>
+    </node>
+    <node id="leonard_thompson">
+      <data key="d0">Candidat</data>
+      <data key="d1">Leonard Thompson</data>
+    </node>
+    <node id="pharmacist">
+      <data key="d0">Poste</data>
+      <data key="d1">Pharmacist</data>
+    </node>
+    <node id="pharmaceuticals">
+      <data key="d0">Competence</data>
+      <data key="d1">Pharmaceuticals</data>
+    </node>
+    <node id="patient_consultation">
+      <data key="d0">Competence</data>
+      <data key="d1">Patient Consultation</data>
+    </node>
+    <node id="medication_dispensing">
+      <data key="d0">Competence</data>
+      <data key="d1">Medication Dispensing</data>
+    </node>
+    <node id="certified_geriatric_pharmacist">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Geriatric Pharmacist</data>
+    </node>
+    <node id="akiko_fujimoto">
+      <data key="d0">Candidat</data>
+      <data key="d1">Akiko Fujimoto</data>
+    </node>
+    <node id="chef">
+      <data key="d0">Poste</data>
+      <data key="d1">Chef</data>
+    </node>
+    <node id="food_preparation">
+      <data key="d0">Competence</data>
+      <data key="d1">Food Preparation</data>
+    </node>
+    <node id="knife_skills">
+      <data key="d0">Competence</data>
+      <data key="d1">Knife Skills</data>
+    </node>
+    <node id="presentation_skills">
+      <data key="d0">Competence</data>
+      <data key="d1">Presentation Skills</data>
+    </node>
+    <node id="menu_planning">
+      <data key="d0">Competence</data>
+      <data key="d1">Menu Planning</data>
+    </node>
+    <node id="culinary_skills">
+      <data key="d0">Competence</data>
+      <data key="d1">Culinary Skills</data>
+    </node>
+    <node id="pastry_arts_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">Pastry Arts Certification</data>
+    </node>
+    <node id="shoji_fujii">
+      <data key="d0">Candidat</data>
+      <data key="d1">Shoji Fujii</data>
+    </node>
+    <node id="git">
+      <data key="d0">Competence</data>
+      <data key="d1">Git</data>
+    </node>
+    <node id="data_structures">
+      <data key="d0">Competence</data>
+      <data key="d1">Data Structures</data>
+    </node>
+    <node id="algorithms">
+      <data key="d0">Competence</data>
+      <data key="d1">Algorithms</data>
+    </node>
+    <node id="oracle_java_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">Oracle Java Certification</data>
+    </node>
+    <node id="kenshin_hara">
+      <data key="d0">Candidat</data>
+      <data key="d1">Kenshin Hara</data>
+    </node>
+    <node id="certified_fitness_trainer">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Fitness Trainer</data>
+    </node>
+    <node id="evan_collins">
+      <data key="d0">Candidat</data>
+      <data key="d1">Evan Collins</data>
+    </node>
+    <node id="ai_researcher">
+      <data key="d0">Poste</data>
+      <data key="d1">AI Researcher</data>
+    </node>
+    <node id="innovation">
+      <data key="d0">Competence</data>
+      <data key="d1">Innovation</data>
+    </node>
+    <node id="programming">
+      <data key="d0">Competence</data>
+      <data key="d1">Programming</data>
+    </node>
+    <node id="research_methodology">
+      <data key="d0">Competence</data>
+      <data key="d1">Research Methodology</data>
+    </node>
+    <node id="machine_learning">
+      <data key="d0">Competence</data>
+      <data key="d1">Machine Learning</data>
+    </node>
+    <node id="imani_johnson">
+      <data key="d0">Candidat</data>
+      <data key="d1">Imani Johnson</data>
+    </node>
+    <node id="data_analyst">
+      <data key="d0">Poste</data>
+      <data key="d1">Data Analyst</data>
+    </node>
+    <node id="data_reporting">
+      <data key="d0">Competence</data>
+      <data key="d1">Data Reporting</data>
+    </node>
+    <node id="tableau_desktop_specialist">
+      <data key="d0">Competence</data>
+      <data key="d1">Tableau Desktop Specialist</data>
+    </node>
+    <node id="allison_carter">
+      <data key="d0">Candidat</data>
+      <data key="d1">Allison Carter</data>
+    </node>
+    <node id="psychologist">
+      <data key="d0">Poste</data>
+      <data key="d1">Psychologist</data>
+    </node>
+    <node id="clinical_skills">
+      <data key="d0">Competence</data>
+      <data key="d1">Clinical Skills</data>
+    </node>
+    <node id="therapy">
+      <data key="d0">Competence</data>
+      <data key="d1">Therapy</data>
+    </node>
+    <node id="cognitive_behavioral_therapy">
+      <data key="d0">Competence</data>
+      <data key="d1">Cognitive Behavioral Therapy</data>
+    </node>
+    <node id="psychopathology">
+      <data key="d0">Competence</data>
+      <data key="d1">Psychopathology</data>
+    </node>
+    <node id="mental_health">
+      <data key="d0">Competence</data>
+      <data key="d1">Mental Health</data>
+    </node>
+    <node id="trauma_informed_care_certificate">
+      <data key="d0">Competence</data>
+      <data key="d1">Trauma-Informed Care Certificate</data>
+    </node>
+    <node id="reed_taylor">
+      <data key="d0">Candidat</data>
+      <data key="d1">Reed Taylor</data>
+    </node>
+    <node id="civil_engineer">
+      <data key="d0">Poste</data>
+      <data key="d1">Civil Engineer</data>
+    </node>
+    <node id="materials_testing">
+      <data key="d0">Competence</data>
+      <data key="d1">Materials Testing</data>
+    </node>
+    <node id="structural_design">
+      <data key="d0">Competence</data>
+      <data key="d1">Structural Design</data>
+    </node>
+    <node id="soil_mechanics">
+      <data key="d0">Competence</data>
+      <data key="d1">Soil Mechanics</data>
+    </node>
+    <node id="licensed_professional_engineer">
+      <data key="d0">Competence</data>
+      <data key="d1">Licensed Professional Engineer (PE)</data>
+    </node>
+    <node id="stella_moore">
+      <data key="d0">Candidat</data>
+      <data key="d1">Stella Moore</data>
+    </node>
+    <node id="accountant">
+      <data key="d0">Poste</data>
+      <data key="d1">Accountant</data>
+    </node>
+    <node id="financial_analysis">
+      <data key="d0">Competence</data>
+      <data key="d1">Financial Analysis</data>
+    </node>
+    <node id="accounting_software">
+      <data key="d0">Competence</data>
+      <data key="d1">Accounting Software</data>
+    </node>
+    <node id="auditing">
+      <data key="d0">Competence</data>
+      <data key="d1">Auditing</data>
+    </node>
+    <node id="spreadsheet_skills">
+      <data key="d0">Competence</data>
+      <data key="d1">Spreadsheet Skills</data>
+    </node>
+    <node id="certified_management_accountant">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Management Accountant</data>
+    </node>
+    <node id="colin_young">
+      <data key="d0">Candidat</data>
+      <data key="d1">Colin Young</data>
+    </node>
+    <node id="clinical_research">
+      <data key="d0">Competence</data>
+      <data key="d1">Clinical Research</data>
+    </node>
+    <node id="diagnosis">
+      <data key="d0">Competence</data>
+      <data key="d1">Diagnosis</data>
+    </node>
+    <node id="medical_knowledge">
+      <data key="d0">Competence</data>
+      <data key="d1">Medical Knowledge</data>
+    </node>
+    <node id="certified_medical_examiner">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Medical Examiner</data>
+    </node>
+    <node id="keiko_tanaka">
+      <data key="d0">Candidat</data>
+      <data key="d1">Keiko Tanaka</data>
+    </node>
+    <node id="system_design">
+      <data key="d0">Competence</data>
+      <data key="d1">System Design</data>
+    </node>
+    <node id="business_process_modeling_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">Business Process Modeling Certification</data>
+    </node>
+    <node id="oliver_davis">
+      <data key="d0">Candidat</data>
+      <data key="d1">Oliver Davis</data>
+    </node>
+    <node id="urban_design">
+      <data key="d0">Competence</data>
+      <data key="d1">Urban Design</data>
+    </node>
+    <node id="sustainability">
+      <data key="d0">Competence</data>
+      <data key="d1">Sustainability</data>
+    </node>
+    <node id="certified_environmental_planner">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Environmental Planner</data>
+    </node>
+    <node id="zamir_clark">
+      <data key="d0">Candidat</data>
+      <data key="d1">Zamir Clark</data>
+    </node>
+    <node id="graphic_designer">
+      <data key="d0">Poste</data>
+      <data key="d1">Graphic Designer</data>
+    </node>
+    <node id="photo_editing">
+      <data key="d0">Competence</data>
+      <data key="d1">Photo Editing</data>
+    </node>
+    <node id="branding">
+      <data key="d0">Competence</data>
+      <data key="d1">Branding</data>
+    </node>
+    <node id="web_design">
+      <data key="d0">Competence</data>
+      <data key="d1">Web Design</data>
+    </node>
+    <node id="adobe_photoshop">
+      <data key="d0">Competence</data>
+      <data key="d1">Adobe Photoshop</data>
+    </node>
+    <node id="typography">
+      <data key="d0">Competence</data>
+      <data key="d1">Typography</data>
+    </node>
+    <node id="certified_graphic_designer">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Graphic Designer</data>
+    </node>
+    <node id="back_end_development">
+      <data key="d0">Competence</data>
+      <data key="d1">Back-End Development</data>
+    </node>
+    <node id="html">
+      <data key="d0">Competence</data>
+      <data key="d1">HTML</data>
+    </node>
+    <node id="react">
+      <data key="d0">Competence</data>
+      <data key="d1">React</data>
+    </node>
+    <node id="version_control">
+      <data key="d0">Competence</data>
+      <data key="d1">Version Control</data>
+    </node>
+    <node id="web_developer">
+      <data key="d0">Poste</data>
+      <data key="d1">Web Developer</data>
+    </node>
+    <node id="aws_certified_developer_associate">
+      <data key="d0">Competence</data>
+      <data key="d1">AWS Certified Developer Associate</data>
+    </node>
+    <node id="cloud_architect">
+      <data key="d0">Poste</data>
+      <data key="d1">Cloud Architect</data>
+    </node>
+    <node id="azure">
+      <data key="d0">Competence</data>
+      <data key="d1">Azure</data>
+    </node>
+    <node id="scalability">
+      <data key="d0">Competence</data>
+      <data key="d1">Scalability</data>
+    </node>
+    <node id="solution_architecture">
+      <data key="d0">Competence</data>
+      <data key="d1">Solution Architecture</data>
+    </node>
+    <node id="aws">
+      <data key="d0">Competence</data>
+      <data key="d1">AWS</data>
+    </node>
+    <node id="cloud_computing">
+      <data key="d0">Competence</data>
+      <data key="d1">Cloud Computing</data>
+    </node>
+    <node id="aws_certified_solutions_architect_professional">
+      <data key="d0">Competence</data>
+      <data key="d1">AWS Certified Solutions Architect Professional</data>
+    </node>
+    <node id="kenta_ito">
+      <data key="d0">Candidat</data>
+      <data key="d1">Kenta Ito</data>
+    </node>
+    <node id="ux_ui_design">
+      <data key="d0">Competence</data>
+      <data key="d1">UX/UI Design</data>
+    </node>
+    <node id="google_ux_design_certificate">
+      <data key="d0">Competence</data>
+      <data key="d1">Google UX Design Certificate</data>
+    </node>
+    <node id="shayla_allen">
+      <data key="d0">Candidat</data>
+      <data key="d1">Shayla Allen</data>
+    </node>
+    <node id="data_cleaning">
+      <data key="d0">Competence</data>
+      <data key="d1">Data Cleaning</data>
+    </node>
+    <node id="sas_certified_data_scientist">
+      <data key="d0">Competence</data>
+      <data key="d1">SAS Certified Data Scientist</data>
+    </node>
+    <node id="rebecca_davis">
+      <data key="d0">Candidat</data>
+      <data key="d1">Rebecca Davis</data>
+    </node>
+    <node id="time_management">
+      <data key="d0">Competence</data>
+      <data key="d1">Time Management</data>
+    </node>
+    <node id="food_safety">
+      <data key="d0">Competence</data>
+      <data key="d1">Food Safety</data>
+    </node>
+    <node id="team_management">
+      <data key="d0">Competence</data>
+      <data key="d1">Team Management</data>
+    </node>
+    <node id="servsafe_food_handler_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">ServSafe Food Handler Certification</data>
+    </node>
+    <node id="riley_brooks">
+      <data key="d0">Candidat</data>
+      <data key="d1">Riley Brooks</data>
+    </node>
+    <node id="body_composition">
+      <data key="d0">Competence</data>
+      <data key="d1">Body Composition</data>
+    </node>
+    <node id="american_council_on_exercise_certification">
+      <data key="d0">Competence</data>
+      <data key="d1">American Council on Exercise (ACE) Certification</data>
+    </node>
+    <node id="isaiah_johnson">
+      <data key="d0">Candidat</data>
+      <data key="d1">Isaiah Johnson</data>
+    </node>
+    <node id="blood_pressure_monitoring">
+      <data key="d0">Competence</data>
+      <data key="d1">Blood Pressure Monitoring</data>
+    </node>
+    <node id="iv_insertion">
+      <data key="d0">Competence</data>
+      <data key="d1">IV Insertion</data>
+    </node>
+    <node id="certified_pediatric_nurse">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Pediatric Nurse</data>
+    </node>
+    <node id="vendor_management">
+      <data key="d0">Competence</data>
+      <data key="d1">Vendor Management</data>
+    </node>
+    <node id="transportation">
+      <data key="d0">Competence</data>
+      <data key="d1">Transportation</data>
+    </node>
+    <node id="keisuke_kobayashi">
+      <data key="d0">Candidat</data>
+      <data key="d1">Keisuke Kobayashi</data>
+    </node>
+    <node id="tax_laws">
+      <data key="d0">Competence</data>
+      <data key="d1">Tax Laws</data>
+    </node>
+    <node id="enrolled_agent">
+      <data key="d0">Competence</data>
+      <data key="d1">Enrolled Agent (EA)</data>
+    </node>
+    <node id="trevon_lee">
+      <data key="d0">Candidat</data>
+      <data key="d1">Trevon Lee</data>
+    </node>
+    <node id="process_improvement">
+      <data key="d0">Competence</data>
+      <data key="d1">Process Improvement</data>
+    </node>
+    <node id="certified_supply_chain_professional">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Supply Chain Professional</data>
+    </node>
+    <node id="takeshi_kimura">
+      <data key="d0">Candidat</data>
+      <data key="d1">Takeshi Kimura</data>
+    </node>
+    <node id="tax_preparation">
+      <data key="d0">Competence</data>
+      <data key="d1">Tax Preparation</data>
+    </node>
+    <node id="financial_forecasting">
+      <data key="d0">Competence</data>
+      <data key="d1">Financial Forecasting</data>
+    </node>
+    <node id="certified_public_accountant">
+      <data key="d0">Competence</data>
+      <data key="d1">Certified Public Accountant (CPA)</data>
+    </node>
+    <node id="miles_nelson">
+      <data key="d0">Candidat</data>
+      <data key="d1">Miles Nelson</data>
+    </node>
+    <node id="ai_specialist">
+      <data key="d0">Poste</data>
+      <data key="d1">AI Specialist</data>
+    </node>
+    <node id="tensorflow">
+      <data key="d0">Competence</data>
+      <data key="d1">TensorFlow</data>
+    </node>
+    <node id="neural_networks">
+      <data key="d0">Competence</data>
+      <data key="d1">Neural Networks</data>
+    </node>
+    <node id="nlp">
+      <data key="d0">Competence</data>
+      <data key="d1">NLP</data>
+    </node>
+    <node id="azure_ai_engineer_associate">
+      <data key="d0">Competence</data>
+      <data key="d1">Microsoft Certified: Azure AI Engineer Associate</data>
+    </node>
+    <node id="nia_harris">
+      <data key="d0">Candidat</data>
+      <data key="d1">Nia Harris</data>
+    </node>
+    <node id="surveying">
+      <data key="d0">Competence</data>
+      <data key="d1">Surveying</data>
+    </node>
+    <node id="dentist">
+      <data key="d0">Poste</data>
+      <data key="d1">Dentist</data>
+    </node>
+    <node id="orthodontics">
+      <data key="d0">Competence</data>
+      <data key="d1">Orthodontics</data>
+    </node>
+    <node id="oral_health">
+      <data key="d0">Competence</data>
+      <data key="d1">Oral Health</data>
+    </node>
+    <node id="oral_hygiene">
+      <data key="d0">Competence</data>
+      <data key="d1">Oral Hygiene</data>
+    </node>
+    <edge source="daisuke_mori" target="fitness_coach">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="daisuke_mori" target="injury_prevention">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="daisuke_mori" target="motivation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="daisuke_mori" target="nutrition">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="daisuke_mori" target="health_coaching">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="daisuke_mori" target="strength_training">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="daisuke_mori" target="certified_personal_trainer">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="taichi_shimizu" target="physician">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="taichi_shimizu" target="healthcare">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="taichi_shimizu" target="pharmacology">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="taichi_shimizu" target="medical_terminology">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="taichi_shimizu" target="patient_care">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="taichi_shimizu" target="surgical_skills">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="taichi_shimizu" target="advanced_cardiovascular_life_support">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="sarah_martin" target="financial_analyst">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="sarah_martin" target="forecasting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="sarah_martin" target="financial_modelling">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="sarah_martin" target="excel">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="sarah_martin" target="budgeting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="sarah_martin" target="market_research">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="sarah_martin" target="certified_investment_management_analyst">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keith_hughes" target="supply_chain_manager">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="keith_hughes" target="budgeting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keith_hughes" target="supply_chain_optimization">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keith_hughes" target="risk_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keith_hughes" target="logistics">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keith_hughes" target="project_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keith_hughes" target="scpro_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="james_davis" target="supply_chain_manager">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="james_davis" target="logistics">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="james_davis" target="negotiation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="james_davis" target="procurement">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="james_davis" target="supply_chain_optimization">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="james_davis" target="budgeting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="james_davis" target="lean_six_sigma_green_belt_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="database_administrator">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="miku_matsuda" target="optimization">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="cloud_databases">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="sql">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="database_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="performance_tuning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="azure_database_administrator_associate">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="back_end_development">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="html">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="react">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="version_control">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="aws_certified_developer_associate">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miku_matsuda" target="web_developer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="aaliyah_scott" target="architect">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="aaliyah_scott" target="3d_modeling">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="aaliyah_scott" target="project_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="aaliyah_scott" target="sustainable_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="aaliyah_scott" target="construction_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="aaliyah_scott" target="urban_planning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="aaliyah_scott" target="certified_interior_designer">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zara_scott" target="operations_manager">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="zara_scott" target="project_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zara_scott" target="leadership">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zara_scott" target="supply_chain_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zara_scott" target="customer_service">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zara_scott" target="risk_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="holly_white" target="database_administrator">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="holly_white" target="database_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="holly_white" target="troubleshooting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="holly_white" target="optimization">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="holly_white" target="data_security">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="holly_white" target="database_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="holly_white" target="comptia_data_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="ami_takahashi" target="architect">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="ami_takahashi" target="sustainable_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="ami_takahashi" target="construction_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="ami_takahashi" target="interior_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="ami_takahashi" target="autocad">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="ami_takahashi" target="3d_modeling">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="ami_takahashi" target="certified_interior_designer">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="cybersecurity_analyst">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="brian_king" target="penetration_testing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="incident_response">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="security_protocols">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="network_security">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="ethical_hacking">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="certified_information_security_manager">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="supply_chain_manager">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="brian_king" target="project_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="vendor_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="transportation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="risk_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="budgeting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="brian_king" target="lean_six_sigma_green_belt_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jonah_anderson" target="software_engineer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="jonah_anderson" target="software_development">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jonah_anderson" target="java">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jonah_anderson" target="python">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jonah_anderson" target="c++">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jonah_anderson" target="agile">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jonah_anderson" target="certified_kubernetes_administrator">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="owen_campbell" target="project_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="owen_campbell" target="policy_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="owen_campbell" target="gis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="owen_campbell" target="community_engagement">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="owen_campbell" target="urban_development">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="owen_campbell" target="urban_planner">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="hinata_sato" target="machine_learning_engineer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="hinata_sato" target="python">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hinata_sato" target="data_science">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hinata_sato" target="data_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hinata_sato" target="statistics">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hinata_sato" target="deep_learning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hinata_sato" target="machine_learning_specialization">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jada_williams" target="personal_trainer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="jada_williams" target="fitness">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jada_williams" target="anatomy">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jada_williams" target="injury_prevention">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jada_williams" target="nutrition">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jada_williams" target="exercise_planning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jada_williams" target="functional_movement_systems_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="elliot_moore" target="biomedical_engineer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="elliot_moore" target="clinical_trials">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="elliot_moore" target="medical_devices">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="elliot_moore" target="engineering">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="elliot_moore" target="research">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="elliot_moore" target="regulatory_compliance">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="elliot_moore" target="fundamentals_of_biomedical_engineering">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="yoshihiro_nakamura" target="nurse">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="yoshihiro_nakamura" target="compassion">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="yoshihiro_nakamura" target="medical_terminology">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="yoshihiro_nakamura" target="healthcare">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="yoshihiro_nakamura" target="first_aid">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="yoshihiro_nakamura" target="cpr">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="yoshihiro_nakamura" target="certified_nurse_assistant">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hazel_clark" target="systems_analyst">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="hazel_clark" target="data_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hazel_clark" target="systems_integration">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hazel_clark" target="project_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hazel_clark" target="sql">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hazel_clark" target="business_process_modeling">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="hazel_clark" target="azure_solutions_architect_expert">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="lauren_davis" target="cybersecurity_analyst">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="lauren_davis" target="penetration_testing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="lauren_davis" target="vulnerability_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="lauren_davis" target="ethical_hacking">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="lauren_davis" target="risk_assessment">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="lauren_davis" target="incident_response">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="lauren_davis" target="certified_ethical_hacker">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jack_cooper" target="financial_analyst">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="jack_cooper" target="market_research">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jack_cooper" target="investment_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jack_cooper" target="forecasting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jack_cooper" target="budgeting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jack_cooper" target="corporate_finance">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jack_cooper" target="certified_financial_planner">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jaylen_morris" target="product_manager">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="jaylen_morris" target="leadership">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jaylen_morris" target="product_development">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jaylen_morris" target="cross_functional_collaboration">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jaylen_morris" target="agile">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jaylen_morris" target="team_coordination">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="jaylen_morris" target="certified_product_marketing_manager">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="emiko_matsuda" target="content_writer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="emiko_matsuda" target="research">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="emiko_matsuda" target="creative_writing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="emiko_matsuda" target="blogging">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="emiko_matsuda" target="editing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="emiko_matsuda" target="communication">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="emiko_matsuda" target="content_marketing_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="harumi_watanabe" target="personal_trainer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="harumi_watanabe" target="client_motivation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="harumi_watanabe" target="injury_prevention">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="harumi_watanabe" target="goal_setting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="harumi_watanabe" target="anatomy">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="harumi_watanabe" target="fitness">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="harumi_watanabe" target="certified_personal_trainer">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="leonard_thompson" target="pharmacist">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="leonard_thompson" target="pharmaceuticals">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="leonard_thompson" target="healthcare">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="leonard_thompson" target="medical_terminology">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="leonard_thompson" target="patient_consultation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="leonard_thompson" target="medication_dispensing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="leonard_thompson" target="certified_geriatric_pharmacist">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="akiko_fujimoto" target="chef">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="akiko_fujimoto" target="food_preparation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="akiko_fujimoto" target="knife_skills">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="akiko_fujimoto" target="presentation_skills">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="akiko_fujimoto" target="menu_planning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="akiko_fujimoto" target="culinary_skills">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="akiko_fujimoto" target="pastry_arts_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="software_engineer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="shoji_fujii" target="agile">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="git">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="data_structures">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="algorithms">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="c++">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="oracle_java_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="dentist">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="shoji_fujii" target="anatomy">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="orthodontics">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="oral_health">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="patient_care">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shoji_fujii" target="oral_hygiene">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="personal_trainer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="kenshin_hara" target="exercise_planning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="client_motivation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="strength_training">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="nutrition">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="injury_prevention">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="certified_fitness_trainer">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="cloud_architect">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="kenshin_hara" target="azure">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="scalability">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="solution_architecture">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="aws">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="cloud_computing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenshin_hara" target="aws_certified_solutions_architect_professional">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="evan_collins" target="ai_researcher">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="evan_collins" target="innovation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="evan_collins" target="programming">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="evan_collins" target="research_methodology">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="evan_collins" target="machine_learning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="evan_collins" target="deep_learning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="imani_johnson" target="data_analyst">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="imani_johnson" target="sql">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="imani_johnson" target="data_reporting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="imani_johnson" target="excel">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="imani_johnson" target="statistics">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="imani_johnson" target="data_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="imani_johnson" target="tableau_desktop_specialist">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="allison_carter" target="psychologist">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="allison_carter" target="clinical_skills">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="allison_carter" target="therapy">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="allison_carter" target="cognitive_behavioral_therapy">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="allison_carter" target="psychopathology">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="allison_carter" target="mental_health">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="allison_carter" target="trauma_informed_care_certificate">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="reed_taylor" target="civil_engineer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="reed_taylor" target="materials_testing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="reed_taylor" target="risk_assessment">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="reed_taylor" target="structural_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="reed_taylor" target="soil_mechanics">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="reed_taylor" target="construction_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="reed_taylor" target="licensed_professional_engineer">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="stella_moore" target="accountant">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="stella_moore" target="financial_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="stella_moore" target="accounting_software">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="stella_moore" target="auditing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="stella_moore" target="budgeting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="stella_moore" target="spreadsheet_skills">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="stella_moore" target="certified_management_accountant">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="colin_young" target="physician">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="colin_young" target="clinical_research">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="colin_young" target="pharmacology">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="colin_young" target="patient_consultation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="colin_young" target="diagnosis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="colin_young" target="medical_knowledge">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="colin_young" target="certified_medical_examiner">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keiko_tanaka" target="systems_analyst">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="keiko_tanaka" target="project_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keiko_tanaka" target="system_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keiko_tanaka" target="business_process_modeling">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keiko_tanaka" target="sql">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keiko_tanaka" target="data_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keiko_tanaka" target="business_process_modeling_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="oliver_davis" target="urban_planner">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="oliver_davis" target="urban_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="oliver_davis" target="policy_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="oliver_davis" target="sustainability">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="oliver_davis" target="gis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="oliver_davis" target="community_engagement">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="oliver_davis" target="certified_environmental_planner">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zamir_clark" target="graphic_designer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="zamir_clark" target="photo_editing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zamir_clark" target="branding">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zamir_clark" target="web_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zamir_clark" target="adobe_photoshop">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zamir_clark" target="typography">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="zamir_clark" target="certified_graphic_designer">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenta_ito" target="graphic_designer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="kenta_ito" target="branding">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenta_ito" target="photo_editing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenta_ito" target="web_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenta_ito" target="ux_ui_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenta_ito" target="typography">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="kenta_ito" target="google_ux_design_certificate">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shayla_allen" target="data_analyst">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="shayla_allen" target="data_cleaning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shayla_allen" target="data_reporting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shayla_allen" target="excel">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shayla_allen" target="python">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shayla_allen" target="statistics">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="shayla_allen" target="sas_certified_data_scientist">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="rebecca_davis" target="chef">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="rebecca_davis" target="time_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="rebecca_davis" target="food_safety">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="rebecca_davis" target="team_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="rebecca_davis" target="food_preparation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="rebecca_davis" target="menu_planning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="rebecca_davis" target="servsafe_food_handler_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="riley_brooks" target="personal_trainer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="riley_brooks" target="client_motivation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="riley_brooks" target="strength_training">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="riley_brooks" target="anatomy">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="riley_brooks" target="body_composition">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="riley_brooks" target="goal_setting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="riley_brooks" target="american_council_on_exercise_certification">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="isaiah_johnson" target="nurse">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="isaiah_johnson" target="first_aid">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="isaiah_johnson" target="blood_pressure_monitoring">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="isaiah_johnson" target="patient_care">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="isaiah_johnson" target="cpr">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="isaiah_johnson" target="iv_insertion">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="isaiah_johnson" target="certified_pediatric_nurse">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keisuke_kobayashi" target="accountant">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="keisuke_kobayashi" target="tax_laws">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keisuke_kobayashi" target="financial_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keisuke_kobayashi" target="auditing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keisuke_kobayashi" target="spreadsheet_skills">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keisuke_kobayashi" target="budgeting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="keisuke_kobayashi" target="enrolled_agent">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="trevon_lee" target="operations_manager">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="trevon_lee" target="budgeting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="trevon_lee" target="customer_service">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="trevon_lee" target="team_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="trevon_lee" target="process_improvement">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="trevon_lee" target="risk_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="trevon_lee" target="certified_supply_chain_professional">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="takeshi_kimura" target="accountant">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="takeshi_kimura" target="auditing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="takeshi_kimura" target="tax_preparation">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="takeshi_kimura" target="financial_forecasting">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="takeshi_kimura" target="financial_analysis">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="takeshi_kimura" target="accounting_software">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="takeshi_kimura" target="certified_public_accountant">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miles_nelson" target="ai_specialist">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="miles_nelson" target="tensorflow">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miles_nelson" target="neural_networks">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miles_nelson" target="deep_learning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miles_nelson" target="machine_learning">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miles_nelson" target="nlp">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="miles_nelson" target="azure_ai_engineer_associate">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="nia_harris" target="civil_engineer">
+      <data key="d2">A_TRAVAILLE_COMME</data>
+    </edge>
+    <edge source="nia_harris" target="risk_assessment">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="nia_harris" target="surveying">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="nia_harris" target="construction_management">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="nia_harris" target="materials_testing">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="nia_harris" target="structural_design">
+      <data key="d2">MAITRISE</data>
+    </edge>
+    <edge source="nia_harris" target="licensed_professional_engineer">
+      <data key="d2">MAITRISE</data>
+    </edge>
+  </graph>
+</graphml>

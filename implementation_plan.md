@@ -9,10 +9,10 @@
 ## Table des matières
 
 1. [Prérequis & Recherche](#1--prérequis--recherche)
-2. [Architecture d'Intégration](#2--architecture-dintégration)
+2. [Architecture d'Intégration](#2--architecture-d'intégration)
 3. [Stratégie de Collaboration](#3--stratégie-de-collaboration-git--environnement)
 4. [Structure du Projet](#4--structure-du-projet-arborescence)
-5. [Roadmap d'Implémentation](#5--roadmap-dimplémentation)
+5. [Roadmap d'Implémentation](#5--roadmap-d'implémentation)
 6. [Fondations — Par quoi commencer aujourd'hui](#6--fondations--par-quoi-commencer-aujourdhui)
 
 ---
