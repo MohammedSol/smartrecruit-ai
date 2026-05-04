@@ -204,7 +204,7 @@ footer                          { display: none !important; }
 
 
 # --------------------------------------------------------------------------- #
-#  Fonction publique unique                                                    #
+#  Fonction publique unique                                                   #
 # --------------------------------------------------------------------------- #
 def appliquer_style_et_sidebar(extra_css: str = "") -> None:
     """
@@ -217,25 +217,22 @@ def appliquer_style_et_sidebar(extra_css: str = "") -> None:
                    Exemple : des classes utilisees uniquement dans cette page.
                    Le CSS passe ici est injecte APRES le CSS global dans le meme
                    bloc <style>, evitant un second appel HTTP.
-
-    Example:
-        # app.py
-        from ui_utils import appliquer_style_et_sidebar
-        st.set_page_config(...)
-        appliquer_style_et_sidebar()
-
-        # pages/2_Vivier.py — avec CSS additionnel
-        from ui_utils import appliquer_style_et_sidebar
-        st.set_page_config(...)
-        appliquer_style_et_sidebar(extra_css=\"\"\"
-            .kanban-card { border-radius: 8px; ... }
-        \"\"\")
     """
-    # ── Injection CSS (global + additionnel fusionne en un seul bloc) ────────
+    # --- CSS "Pro Move" : Cacher l'interface de développement Streamlit ---
+    hide_st_style = """
+        #MainMenu {visibility: hidden;}
+        header {visibility: hidden;}
+        footer {visibility: hidden;}
+        [data-testid="stHeader"] {visibility: hidden;}
+    """
+
+    # ── Injection CSS (global + pro move + additionnel fusionnés) ────────
     if extra_css:
-        css_complet = _CSS_GLOBAL.replace("</style>", f"\n{extra_css}\n</style>")
+        # On injecte le code pour cacher Streamlit + le CSS spécifique de la page
+        css_complet = _CSS_GLOBAL.replace("</style>", f"\n{hide_st_style}\n{extra_css}\n</style>")
     else:
-        css_complet = _CSS_GLOBAL
+        # On injecte juste le code pour cacher Streamlit
+        css_complet = _CSS_GLOBAL.replace("</style>", f"\n{hide_st_style}\n</style>")
 
     st.markdown(css_complet, unsafe_allow_html=True)
 

@@ -17,6 +17,8 @@ Lancement :
 import sys
 from pathlib import Path
 
+import pandas as pd
+import plotly.express as px
 import streamlit as st
 from ui_utils import appliquer_style_et_sidebar
 
@@ -125,60 +127,52 @@ st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
 
 
 # --------------------------------------------------------------------------- #
-#  Section 2 — Etat du systeme                                                #
+#  Section 2 — Analytics RH (Business Intelligence)                           #
 # --------------------------------------------------------------------------- #
-st.markdown('<p class="section-label">Infrastructure</p>', unsafe_allow_html=True)
-st.markdown('<p class="section-title">Etat du Systeme</p>', unsafe_allow_html=True)
+st.markdown('<p class="section-label">Business Intelligence</p>', unsafe_allow_html=True)
+st.markdown('<p class="section-title">Analyse du Vivier de Talents</p>', unsafe_allow_html=True)
+st.markdown(
+    "<p class=\"section-subtitle\">Visualisez les forces en présence et la dynamique d'acquisition de vos candidats.</p>",
+    unsafe_allow_html=True,
+)
 
-sys_col1, sys_col2 = st.columns([2, 1])
+data_skills = pd.DataFrame({
+    "Compétence": ["Python", "Java", "SQL", "React", "Kafka", "PySpark"],
+    "Nombre": [35, 28, 25, 20, 15, 12]
+})
 
-with sys_col1:
-    st.markdown("""
-    <div class="system-block">
-        <div class="system-icon">🛰️</div>
-        <div class="system-content">
-            <h4>
-                Moteur Hybride GraphRAG
-                &nbsp;
-                <span class="status-badge status-online">● En ligne</span>
-            </h4>
-            <p>
-                Le pipeline <strong>ChromaDB + MongoDB + NetworkX</strong> est entierement operationnel.
-                La collection <code>community_insights</code> est prete pour la recherche semantique globale.
-                La collection <code>cv_embeddings</code> contient les vecteurs individuels des candidats (384 dimensions).
-                Le modele d'embedding <strong>paraphrase-multilingual-MiniLM-L12-v2</strong> est charge en memoire.
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+data_acquisition = pd.DataFrame({
+    "Mois": ["Nov", "Déc", "Jan", "Fév", "Mar", "Avr"],
+    "Nouveaux CV": [5, 8, 15, 12, 22, 18]
+})
 
-with sys_col2:
-    st.markdown("""
-    <div class="system-block" style="flex-direction:column;gap:16px;">
-        <div>
-            <div style="font-size:0.72rem;font-weight:700;color:#6366F1;text-transform:uppercase;
-                        letter-spacing:0.08em;margin-bottom:10px;">Composants</div>
-            <div style="display:flex;flex-direction:column;gap:8px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span style="font-size:0.82rem;color:#374151;">ChromaDB</span>
-                    <span class="status-badge status-online" style="font-size:0.7rem;">Actif</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span style="font-size:0.82rem;color:#374151;">MongoDB</span>
-                    <span class="status-badge status-online" style="font-size:0.7rem;">Actif</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span style="font-size:0.82rem;color:#374151;">Kafka</span>
-                    <span class="status-badge status-online" style="font-size:0.7rem;">Actif</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span style="font-size:0.82rem;color:#374151;">Groq API</span>
-                    <span class="status-badge status-online" style="font-size:0.7rem;">Actif</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+col1, col2 = st.columns(2)
+
+with col1:
+    with st.container(border=True):
+        fig_skills = px.bar(
+            data_skills,
+            x="Nombre",
+            y="Compétence",
+            orientation='h',
+            title="Top Compétences",
+            color_discrete_sequence=["#6366F1"]
+        )
+        fig_skills.update_layout(yaxis={'categoryorder': 'total ascending'})
+        st.plotly_chart(fig_skills, use_container_width=True)
+
+with col2:
+    with st.container(border=True):
+        fig_acq = px.line(
+            data_acquisition,
+            x="Mois",
+            y="Nouveaux CV",
+            title="Dynamique d'acquisition",
+            markers=True,
+            color_discrete_sequence=["#10B981"]
+        )
+        fig_acq.update_traces(fill='tozeroy')
+        st.plotly_chart(fig_acq, use_container_width=True)
 
 
 # --------------------------------------------------------------------------- #
