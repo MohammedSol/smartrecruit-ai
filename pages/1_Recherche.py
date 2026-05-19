@@ -127,6 +127,28 @@ if requete:
     if not requete:
         st.warning("Veuillez saisir une requete.")
     else:
+        # ---------------------------------------------------------------- #
+        #  SPRINT A — Prompt Injection Guard                               #
+        #  Import lazy + try/except : si security/ n'existe pas ou plante, #
+        #  Streamlit continue normalement (degradation gracieuse).         #
+        # ---------------------------------------------------------------- #
+        try:
+            from security.prompt_guard import scan_input
+            is_safe, raison = scan_input(requete)
+            if not is_safe:
+                st.error(
+                    f"⚠️ **Requête bloquée par le système de sécurité.**\n\n"
+                    f"Motif détecté : *{raison}*\n\n"
+                    "Veuillez reformuler votre recherche en langage RH naturel."
+                )
+                st.stop()
+        except Exception:
+            # Le guard est absent ou a planté → on laisse passer silencieusement
+            pass
+        # ---------------------------------------------------------------- #
+        #  FIN Sprint A                                                     #
+        # ---------------------------------------------------------------- #
+
         # Mise a jour de l'etat avant le spinner (survit au rerender)
         st.session_state.derniere_requete = requete
 

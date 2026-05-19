@@ -10,8 +10,8 @@ from streamlit_agraph import agraph, Node, Edge, Config
 #  Configuration de la page
 # --------------------------------------------------------------------------- #
 st.set_page_config(
-    page_title="Vivier Talents",
-    page_icon="👥",
+    page_title="Vivier Talents | SmartRecruit AI",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -72,19 +72,33 @@ def traduire_fr(texte):
 # --------------------------------------------------------------------------- #
 #  Layout Principal
 # --------------------------------------------------------------------------- #
-st.markdown("<h1>👥 Vivier Talents & Analyse</h1>", unsafe_allow_html=True)
-st.markdown("<p style='color:#64748B;'>Analysez en profondeur le profil de vos candidats grace a l'assistant RH local.</p>", unsafe_allow_html=True)
+st.markdown("""
+<div class="page-hero">
+    <h1>Vivier <span>Talents & Analyse</span></h1>
+    <p>
+        Analysez en profondeur le profil de vos candidats grâce à l'assistant RH local.
+        Explorez le graphe des compétences et interrogez chaque profil individuellement.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 candidats_db = fetch_candidats_from_mongo()
 
 if not candidats_db:
-    st.warning("Aucun candidat trouve dans la base de donnees MongoDB.")
+    st.warning("Aucun candidat trouvé dans la base de données MongoDB.")
     st.stop()
 
-tab1, tab2 = st.tabs(["🌐 Cartographie du Vivier", "👤 Analyse Individuelle"])
+tab1, tab2 = st.tabs(["Cartographie du Vivier", "Analyse Individuelle"])
 
 with tab1:
-    st.markdown("### 🌐 Graphe des Compétences du Vivier")
+    st.markdown("""
+    <div style="margin-bottom: 1.5rem;">
+        <p class="section-label">Visualisation avancée</p>
+        <p class="section-title">Graphe des compétences</p>
+        <p class="section-subtitle">Explorez les connexions entre candidats et compétences techniques.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
     nodes = []
     edges = []
     skills_set = set()
@@ -97,7 +111,7 @@ with tab1:
             profil_dict = json.loads(cv_texte)
             
             # 1. On ajoute TOUJOURS le candidat (On sécurise l'affichage minimum)
-            nodes.append(Node(id=nom, label=nom, size=25, color="#6366F1"))
+            nodes.append(Node(id=nom, label=nom, size=25, color="#2C7A7B"))
             
             # 2. Recherche flexible de la clé des compétences (Smart Search)
             raw_skills = None
@@ -114,7 +128,7 @@ with tab1:
             elif isinstance(raw_skills, str):
                 clean_skills = [s.strip().title() for s in raw_skills.split(',') if s.strip()]
                 
-            # --- FALLBACK NLP BAsics ---
+            # --- FALLBACK NLP Basics ---
             if not clean_skills:
                 summary = profil_dict.get('summary', '')
                 if isinstance(summary, str) and summary:
@@ -132,7 +146,7 @@ with tab1:
             # 4. Création des arêtes et des noeuds de compétences
             for skill in clean_skills:
                 if skill not in skills_set:
-                    nodes.append(Node(id=skill, label=skill, size=15, color="#10B981"))
+                    nodes.append(Node(id=skill, label=skill, size=15, color="#B8860B"))
                     skills_set.add(skill)
                 # On relie le candidat à sa compétence
                 edges.append(Edge(source=nom, target=skill))
@@ -147,26 +161,26 @@ with tab1:
         config = Config(height=600, width="100%", directed=False, physics=True)
         agraph(nodes=nodes, edges=edges, config=config)
 
-    # 6. L'outil de l'Architecte : Le Mode Debug
-    '''with st.expander("🛠️ Mode Debug : Voir la structure JSON réelle de MongoDB"):
-        st.info("Regarde ci-dessous comment s'appelle exactement la clé qui contient les compétences :")
-        if candidats_db:
-            premier_candidat_nom = list(candidats_db.keys())[0]
-            st.json(json.loads(candidats_db[premier_candidat_nom]))'''
 with tab2:
-    col_gauche, col_droite = st.columns([1, 2])
+    col_gauche, col_droite = st.columns([1, 2], gap="large")
 
     # -- Colonne Gauche : Selection du profil --
     with col_gauche:
-        st.markdown("### 📋 Profils Disponibles")
+        st.markdown("""
+        <div style="margin-bottom: 1rem;">
+            <p class="section-label">Sélection</p>
+            <p class="section-title" style="font-size: 1.2rem;">Profils disponibles</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
         candidat_selectionne = st.selectbox(
-            "Selectionnez un candidat",
+            "Choisissez un candidat",
             options=list(candidats_db.keys())
         )
         
         cv_texte = candidats_db[candidat_selectionne]
         
-        with st.expander("📄 Fiche du Candidat", expanded=True):
+        with st.expander("Fiche candidat", expanded=True):
             try:
                 # On re-transforme le texte en dictionnaire juste pour faire un bel affichage
                 profil_dict = json.loads(cv_texte)
@@ -179,7 +193,27 @@ with tab2:
                     summary_fr = traduire_fr(summary_brut) if summary_brut != 'Aucun résumé disponible.' else summary_brut
                 
                 st.markdown(f"**Poste :** {titre_fr}")
-                st.markdown(f"**Email :** {profil_dict.get('email', 'Non renseigné')}")
+
+                # -------------------------------------------------------- #
+                #  SPRINT D — Déchiffrement AES (PII Protection)           #
+                #  try/except : si clé absente ou module manquant →        #
+                #  affiche [DONNÉE PROTÉGÉE] sans crasher Streamlit        #
+                # -------------------------------------------------------- #
+                email_brut = profil_dict.get('email', 'Non renseigné')
+                phone_brut = profil_dict.get('phone', 'Non renseigné')
+                try:
+                    from security.encryption import decrypt
+                    email_affiche = decrypt(email_brut)
+                    phone_affiche = decrypt(phone_brut)
+                except Exception:
+                    email_affiche = "[DONNÉE PROTÉGÉE]"
+                    phone_affiche = "[DONNÉE PROTÉGÉE]"
+                # -------------------------------------------------------- #
+                #  FIN Sprint D                                             #
+                # -------------------------------------------------------- #
+
+                st.markdown(f"**Email :** {email_affiche}")
+                st.markdown(f"**Téléphone :** {phone_affiche}")
                 st.markdown(f"**Localisation :** {profil_dict.get('location', 'Non spécifié')}")
                 
                 st.divider()
@@ -191,7 +225,8 @@ with tab2:
                 if skills:
                     st.markdown("**Compétences :**")
                     # Affiche les compétences comme de jolis petits badges
-                    st.markdown(" · ".join([f"`{s}`" for s in skills]))
+                    skills_html = " ".join([f'<span class="skill-badge">{s}</span>' for s in skills])
+                    st.markdown(f'<div class="skills-container">{skills_html}</div>', unsafe_allow_html=True)
                     
             except json.JSONDecodeError:
                 # Sécurité : Si le CV n'est pas un JSON parfait, on l'affiche normalement
@@ -199,19 +234,26 @@ with tab2:
 
     # -- Colonne Droite : Chatbot Local --
     with col_droite:
-        st.markdown(f"### 💬 Assistant RH - Analyse de {candidat_selectionne}")
+        st.markdown(f"""
+        <div style="margin-bottom: 1rem;">
+            <p class="section-label">Assistant RH</p>
+            <p class="section-title" style="font-size: 1.2rem;">Analyse de <span style="color: #2C7A7B;">{candidat_selectionne}</span></p>
+        </div>
+        """, unsafe_allow_html=True)
         
         # Gestion de l'historique par candidat
         historique_key = f"chat_history_{candidat_selectionne}"
         if historique_key not in st.session_state:
             st.session_state[historique_key] = [
-                {"role": "assistant", "content": f"Bonjour ! Je suis l'assistant RH assigne au profil de **{candidat_selectionne}**. Que souhaitez-vous savoir sur ce candidat ?"}
+                {"role": "assistant", "content": f"Bonjour ! Je suis l'assistant RH assigné au profil de **{candidat_selectionne}**. Que souhaitez-vous savoir sur ce candidat ?"}
             ]
             
         # Affichage de l'historique
-        for msg in st.session_state[historique_key]:
-            with st.chat_message(msg["role"]):
-                st.markdown(msg["content"])
+        chat_container = st.container()
+        with chat_container:
+            for msg in st.session_state[historique_key]:
+                with st.chat_message(msg["role"]):
+                    st.markdown(msg["content"])
                 
         # Input utilisateur
         if prompt := st.chat_input(f"Posez une question sur {candidat_selectionne}..."):

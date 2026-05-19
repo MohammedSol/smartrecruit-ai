@@ -223,10 +223,32 @@ def _fetch_mongo_cvs(chroma_docs: list[Document]) -> list[Document]:
     # ── Conversion en Documents LangChain ────────────────────────────────────
     mongo_documents: list[Document] = []
 
+    # ---------------------------------------------------------------- #
+    #  SPRINT C — Import du vérificateur HMAC                          #
+    #  Si integrity.py absent → _verify_fn toujours True (dégradation) #
+    # ---------------------------------------------------------------- #
+    _verify_fn = None
+    try:
+        from security.integrity import verify as _integrity_verify
+        _verify_fn = _integrity_verify
+    except Exception:
+        pass  # Dégradation gracieuse : vérification désactivée
+    # ---------------------------------------------------------------- #
+
     for cv in mongo_docs_raw:
-        # Formate le CV en texte lisible pour le LLM
-        # On utilise str() plutot que json.dumps() pour la lisibilite humaine
         cv_text = _format_cv_for_llm(cv)
+
+        # ---- Sprint C : vérification HMAC avant d'accepter le document ----
+        if _verify_fn is not None:
+            stored_sig = cv.get("hmac_signature", "")
+            if stored_sig and not _verify_fn(cv_text, stored_sig, "demo-secret"):
+                print(
+                    f"[SECURITY] ⚠️  Document rejeté — signature HMAC invalide "
+                    f"pour : {cv.get('name', 'Inconnu')} "
+                    f"(possible knowledge base poisoning)"
+                )
+                continue  # Document exclu du contexte LLM
+        # ---- Fin Sprint C ----
 
         mongo_documents.append(Document(
             page_content=cv_text,

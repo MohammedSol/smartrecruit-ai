@@ -1,224 +1,595 @@
+# ui_utils.py
 """
 ui_utils.py
 ============
 Composant UI centralise — Design System SmartRecruit AI.
-
-Principe DRY : ce module est l'unique source de verite pour :
-    - Le CSS global (typographie, masquages Streamlit, couleurs B2B)
-    - La sidebar de navigation (logo, page_link, version)
-
-Usage dans chaque page :
-    from ui_utils import appliquer_style_et_sidebar
-    appliquer_style_et_sidebar()          # Appel minimal
-    appliquer_style_et_sidebar(extra_css) # Avec CSS additionnel specifique a la page
-
-Architecture :
-    CSS global     -> injecte une seule fois par page via st.markdown
-    CSS additionnel-> CSS specifique a chaque page (result-container, page-hero, etc.)
-    Sidebar        -> dessinee systematiquement avec le meme contenu sur toutes les pages
+Theme : Deep Tech & Élégance Minérale
 """
 
 import streamlit as st
 
 # --------------------------------------------------------------------------- #
-#  CSS Global — commun a toutes les pages                                     #
+#  CSS Global — Theme Unique et Professionnel                                 #
 # --------------------------------------------------------------------------- #
 _CSS_GLOBAL = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap');
 
-/* ── Typographie globale ─────────────────────────────────────────────── */
+/* Reset & base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html, body, [class*="css"] {
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #1A2C3E;
+    scroll-behavior: smooth;
 }
 
-/* ── Masquages natifs Streamlit ──────────────────────────────────────── */
-#MainMenu                       { display: none !important; }
-footer                          { display: none !important; }
-
-/* Navigation multipage native cachee */
-[data-testid="stSidebarNav"]    { display: none !important; }
-
-/* 1. Header transparent mais ABSOLUMENT visible */
-[data-testid="stHeader"] { 
-    background-color: transparent !important; 
-    visibility: visible !important;
-    display: block !important;
+/* --- Palette unique: Deep Tech --- */
+:root {
+    --primary-deep: #0D1B2A;
+    --primary-royal: #1B263B;
+    --accent-teal: #2C7A7B;
+    --accent-brass: #B8860B;
+    --accent-platinum: #E8E8E8;
+    --glow-blue: #4A90E2;
+    --carbon-light: #F5F7FA;
+    --carbon-border: #E2E8F0;
 }
 
-/* 2. On cache STRICTEMENT la zone droite (toolbar, deploy) */
-[data-testid="stToolbar"] { 
-    display: none !important; 
+/* Masquage natif Streamlit */
+#MainMenu, footer, .stDeployButton, [data-testid="stToolbar"] {
+    display: none !important;
 }
-[data-testid="stDecoration"], [data-testid="stStatusWidget"] { 
-    display: none !important; 
-}
+[data-testid="stSidebarNav"] { display: none !important; }
 
-/* 3. On fige la sidebar OUVERTE (Pinning SaaS) */
+/* Sidebar unique - verre dépoli sombre */
 [data-testid="stSidebar"] {
-    min-width: 260px !important;
-    max-width: 260px !important;
+    min-width: 280px !important;
+    max-width: 280px !important;
+    width: 280px !important;
+    background: linear-gradient(165deg, #0A1622 0%, #0F1A28 100%);
+    backdrop-filter: blur(0px);
+    border-right: 1px solid rgba(44, 122, 123, 0.3);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
     transform: translateX(0) !important;
-    visibility: visible !important;
     position: relative !important;
 }
-/* Suppression des boutons de reduction/agrandissement pour empecher l'interaction */
-[data-testid="stSidebarCollapseButton"] { display: none !important; }
-[data-testid="collapsedControl"] { display: none !important; }
-[data-testid="stSidebarCollapsedControl"] { display: none !important; }
-/* ────────────────────────────────────────────────────────────────────── */
-/* ── Fond de page ────────────────────────────────────────────────────── */
-.stApp { background-color: #F8F9FC; }
-
-/* ── Sidebar ─────────────────────────────────────────────────────────── */
-[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
-    border-right: 1px solid #334155;
-}
-[data-testid="stSidebar"] * {
-    color: #CBD5E1 !important;
+[data-testid="stSidebarCollapseButton"],
+[data-testid="collapsedControl"],
+[data-testid="stSidebarCollapsedControl"] {
+    display: none !important;
 }
 [data-testid="stSidebar"] .stSelectbox label,
-[data-testid="stSidebar"] p {
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] .stMarkdown {
     color: #94A3B8 !important;
     font-size: 0.85rem;
 }
 
-/* ── Badges de statut (partages) ─────────────────────────────────────── */
+[data-testid="stHeader"] {
+    background: transparent !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Fond principal - texture douce */
+.stApp {
+    background: linear-gradient(135deg, #F4F7FB 0%, #EDF2F9 100%);
+}
+
+/* --- Badges de statut raffinés --- */
 .status-badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
+    gap: 8px;
+    padding: 4px 14px;
     border-radius: 20px;
-    font-size: 0.78rem;
+    font-size: 0.7rem;
     font-weight: 600;
+    letter-spacing: 0.04em;
+    backdrop-filter: blur(4px);
 }
-.status-online  { background: #D1FAE5; color: #065F46; }
-.status-warning { background: #FEF3C7; color: #92400E; }
+.status-online {
+    background: rgba(44, 122, 123, 0.12);
+    color: #2C7A7B;
+    border: 1px solid rgba(44, 122, 123, 0.3);
+}
+.status-warning {
+    background: rgba(184, 134, 11, 0.12);
+    color: #B8860B;
+    border: 1px solid rgba(184, 134, 11, 0.3);
+}
 
-/* ── Cartes KPI (Dashboard) ──────────────────────────────────────────── */
+/* --- Cartes KPI - Style "Minéral Flottant" --- */
 .kpi-card {
-    background: #FFFFFF;
-    border-radius: 12px;
-    padding: 24px 20px;
-    border: 1px solid #E2E8F0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(0px);
+    border-radius: 24px;
+    padding: 1.6rem 1.2rem;
+    border: 1px solid rgba(44, 122, 123, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
     text-align: center;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     height: 100%;
+    position: relative;
+    overflow: hidden;
 }
-.kpi-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-2px); }
-.kpi-icon   { font-size: 2rem;   margin-bottom: 8px;  display: block; }
-.kpi-value  { font-size: 2.2rem; font-weight: 700; color: #0F172A; line-height: 1.1; margin-bottom: 4px; }
-.kpi-label  { font-size: 0.8rem; font-weight: 500; color: #64748B; text-transform: uppercase; letter-spacing: 0.06em; }
-.kpi-delta  { font-size: 0.75rem; color: #10B981; font-weight: 600; margin-top: 6px; }
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2C7A7B, #B8860B, #4A90E2);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+.kpi-card:hover::before {
+    transform: scaleX(1);
+}
+.kpi-card:hover {
+    border-color: rgba(44, 122, 123, 0.4);
+    box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+}
+.kpi-icon {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #2C7A7B, #4A90E2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+.kpi-value {
+    font-size: 2.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0D1B2A, #1B263B);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    font-family: 'Space Grotesk', monospace;
+}
+.kpi-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #5B6E8C;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.kpi-delta {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #2C7A7B;
+    margin-top: 8px;
+}
 
-/* ── Cartes de navigation (Dashboard) ───────────────────────────────── */
+/* --- Cartes de navigation - Style "Plaque Technique" --- */
 .nav-card {
     background: #FFFFFF;
-    border-radius: 12px;
-    padding: 28px 24px;
+    border-radius: 20px;
+    padding: 1.8rem 1.5rem;
     border: 1px solid #E2E8F0;
-    border-left: 4px solid #6366F1;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-    transition: border-left-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
     height: 100%;
+    position: relative;
+    overflow: hidden;
 }
-.nav-card:hover { border-left-color: #4F46E5; box-shadow: 0 4px 16px rgba(99,102,241,0.12); }
-.nav-card h3    { font-size: 1.05rem; font-weight: 700; color: #0F172A; margin: 0 0 8px 0; }
-.nav-card p     { font-size: 0.875rem; color: #64748B; line-height: 1.5; margin: 0 0 16px 0; }
+.nav-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2C7A7B, #B8860B);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+.nav-card:hover::after {
+    transform: scaleX(1);
+}
+.nav-card:hover {
+    border-color: #CBD5E1;
+    box-shadow: 0 12px 24px -12px rgba(44, 122, 123, 0.2);
+    transform: translateY(-2px);
+}
+.nav-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0D1B2A;
+    margin: 0 0 10px 0;
+    font-family: 'Space Grotesk', monospace;
+}
+.nav-card p {
+    font-size: 0.85rem;
+    color: #5B6E8C;
+    line-height: 1.5;
+    margin: 0 0 1.2rem 0;
+}
 .nav-tag {
     display: inline-block;
-    background: #EEF2FF; color: #4338CA;
-    padding: 2px 10px; border-radius: 4px;
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.04em; margin-right: 4px;
+    background: linear-gradient(135deg, #F0F4F8, #E8EDF3);
+    color: #2C7A7B;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    margin-right: 6px;
+    border: 1px solid rgba(44, 122, 123, 0.2);
 }
 
-/* ── Blocs systeme (Dashboard) ───────────────────────────────────────── */
+/* --- Bloc système --- */
 .system-block {
-    background: #FFFFFF;
-    border-radius: 12px;
-    padding: 24px 28px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 1.5rem 1.8rem;
     border: 1px solid #E2E8F0;
-    display: flex; align-items: flex-start; gap: 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: all 0.25s ease;
 }
-.system-icon             { font-size: 2.5rem; flex-shrink: 0; }
-.system-content h4       { font-size: 1rem; font-weight: 700; color: #0F172A; margin: 0 0 6px 0; }
-.system-content p        { font-size: 0.85rem; color: #64748B; margin: 0; line-height: 1.5; }
+.system-block:hover {
+    border-color: rgba(44, 122, 123, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+.system-icon {
+    font-size: 2rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, #2C7A7B, #4A90E2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    flex-shrink: 0;
+}
+.system-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0D1B2A;
+    margin: 0 0 6px 0;
+}
+.system-content p {
+    font-size: 0.85rem;
+    color: #5B6E8C;
+    line-height: 1.5;
+    margin: 0;
+}
 
-/* ── Hero header (commun) ────────────────────────────────────────────── */
+/* --- Hero header - Style "Aurore Boréale" --- */
 .hero-container {
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #312E81 100%);
-    border-radius: 16px; padding: 48px 40px; margin-bottom: 32px;
-    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0A1622 0%, #0F1A28 40%, #1B2A3A 100%);
+    border-radius: 28px;
+    padding: 3rem 3rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(44, 122, 123, 0.3);
 }
 .hero-container::before {
-    content: ""; position: absolute; top: -40%; right: -10%;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%);
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(44, 122, 123, 0.15) 0%, transparent 70%);
     border-radius: 50%;
 }
-.hero-title      { font-size: 2.4rem; font-weight: 800; color: #FFFFFF; margin: 0 0 12px 0; line-height: 1.2; position: relative; }
-.hero-title span { background: linear-gradient(90deg, #818CF8, #C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-subtitle   { font-size: 1.05rem; color: #94A3B8; margin: 0; line-height: 1.6; max-width: 600px; position: relative; }
-.hero-pill       { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.2); border: 1px solid rgba(99,102,241,0.4); border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 600; color: #C4B5FD; margin-bottom: 20px; position: relative; }
+.hero-container::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -15%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(184, 134, 11, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+}
+.hero-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+    position: relative;
+    letter-spacing: -0.02em;
+}
+.hero-title span {
+    background: linear-gradient(90deg, #5DC9C9, #C49B3A, #7CB8F0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.hero-subtitle {
+    font-size: 1rem;
+    color: #94A3B8;
+    max-width: 560px;
+    line-height: 1.6;
+    position: relative;
+}
+.hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(44, 122, 123, 0.15);
+    border: 1px solid rgba(44, 122, 123, 0.35);
+    border-radius: 40px;
+    padding: 5px 18px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #7CB8F0;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.2rem;
+    backdrop-filter: blur(4px);
+}
 
-/* ── Page hero compact (pages internes) ──────────────────────────────── */
-.page-hero { background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #312E81 100%); border-radius: 14px; padding: 32px 36px; margin-bottom: 28px; }
-.page-hero h1   { font-size: 1.9rem; font-weight: 800; color: #FFFFFF; margin: 0 0 10px 0; }
-.page-hero h1 span { background: linear-gradient(90deg, #818CF8, #C4B5FD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.page-hero p    { font-size: 0.95rem; color: #94A3B8; margin: 0; line-height: 1.6; max-width: 580px; }
+/* --- Page hero compact --- */
+.page-hero {
+    background: linear-gradient(135deg, #0A1622 0%, #0F1A28 60%, #1B2A3A 100%);
+    border-radius: 24px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(44, 122, 123, 0.2);
+}
+.page-hero h1 {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+}
+.page-hero h1 span {
+    background: linear-gradient(90deg, #5DC9C9, #C49B3A);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.page-hero p {
+    font-size: 0.9rem;
+    color: #94A3B8;
+    max-width: 560px;
+    line-height: 1.5;
+}
 
-/* ── Section labels (commun) ─────────────────────────────────────────── */
-.section-label    { font-size: 0.72rem; font-weight: 700; color: #6366F1; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-.section-title    { font-size: 1.3rem;  font-weight: 700; color: #0F172A; margin-bottom: 4px; }
-.section-subtitle { font-size: 0.875rem; color: #64748B; margin-bottom: 20px; }
+/* --- Sections labels --- */
+.section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #2C7A7B;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.8rem;
+}
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0D1B2A;
+    margin-bottom: 0.3rem;
+    font-family: 'Space Grotesk', monospace;
+}
+.section-subtitle {
+    font-size: 0.85rem;
+    color: #5B6E8C;
+    margin-bottom: 1.4rem;
+}
 
-/* ── Divider (commun) ────────────────────────────────────────────────── */
-.custom-divider { height: 1px; background: linear-gradient(90deg, transparent, #E2E8F0 20%, #E2E8F0 80%, transparent); margin: 32px 0; }
+/* --- Divider élégant --- */
+.custom-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2C7A7B 20%, #B8860B 50%, #2C7A7B 80%, transparent);
+    margin: 2rem 0;
+}
 
-/* ── Metriques Streamlit (Dashboard) ────────────────────────────────── */
-[data-testid="metric-container"] { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px !important; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+/* --- Métriques Streamlit --- */
+[data-testid="metric-container"] {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 1.2rem 1rem !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+}
+[data-testid="metric-container"]:hover {
+    border-color: rgba(44, 122, 123, 0.3);
+}
 
-/* ── Zone de resultat (1_Recherche) ─────────────────────────────────── */
-.result-container { background: #FFFFFF; border-radius: 12px; padding: 32px 36px; border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-top: 8px; }
-.result-container h2    { color: #0F172A; font-size: 1.15rem; font-weight: 700; border-bottom: 2px solid #6366F1; padding-bottom: 6px; margin-bottom: 16px; }
+/* --- Zone de résultat --- */
+.result-container {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 2rem 2.2rem;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    margin-top: 8px;
+}
+.result-container h2 {
+    color: #0D1B2A;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-bottom: 2px solid #2C7A7B;
+    padding-bottom: 10px;
+    margin-bottom: 1.2rem;
+}
 .result-container p,
-.result-container li    { color: #374151; font-size: 0.92rem; line-height: 1.65; }
-.result-container strong { color: #0F172A; }
-.result-container hr    { border-color: #E2E8F0; margin: 20px 0; }
+.result-container li {
+    color: #334155;
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+.result-container strong {
+    color: #0D1B2A;
+    font-weight: 600;
+}
+.result-container hr {
+    border-color: #E2E8F0;
+    margin: 1.4rem 0;
+}
 
-/* ── Badge requete (1_Recherche) ─────────────────────────────────────── */
-.query-badge { display: inline-flex; align-items: center; gap: 8px; background: #EEF2FF; border: 1px solid #C7D2FE; border-radius: 8px; padding: 8px 16px; font-size: 0.88rem; font-weight: 500; color: #3730A3; margin-bottom: 16px; }
+/* --- Badge requête --- */
+.query-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #F0F4F8, #E8EDF3);
+    border: 1px solid rgba(44, 122, 123, 0.3);
+    border-radius: 40px;
+    padding: 6px 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #2C7A7B;
+    margin-bottom: 1rem;
+}
 
-/* ── Historique sidebar (1_Recherche) ────────────────────────────────── */
-.hist-item { background: rgba(99,102,241,0.1); border-radius: 6px; padding: 6px 10px; margin-bottom: 6px; font-size: 0.78rem; color: #94A3B8 !important; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 2px solid #6366F1; }
+/* --- Historique sidebar --- */
+.hist-item {
+    background: rgba(44, 122, 123, 0.08);
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+    color: #A5B4FC !important;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-left: 2px solid #2C7A7B;
+    transition: all 0.2s ease;
+}
+.hist-item:hover {
+    background: rgba(44, 122, 123, 0.16);
+    transform: translateX(4px);
+}
 
-/* ── Tip chips (1_Recherche) ─────────────────────────────────────────── */
-.tip-chip { display: inline-block; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; color: #CBD5E1; margin: 8px 4px 0 0; cursor: default; }
+/* --- Tip chips --- */
+.tip-chip {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #94A3B8;
+    margin: 0.5rem 0.25rem 0 0;
+    cursor: default;
+    transition: all 0.2s ease;
+}
+/* Info panel pour la sidebar de résultats */
+.info-panel {
+    background: #F8FAFE;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+.info-panel-title {
+    font-weight: 700;
+    color: #0D1B2A;
+    margin-bottom: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+}
+.info-panel-content {
+    color: #5B6E8C;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 64px 24px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 24px;
+    border: 1px dashed #CBD5E1;
+}
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #2C7A7B, #4A90E2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+.empty-state-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0D1B2A;
+    margin-bottom: 8px;
+}
+.empty-state-text {
+    font-size: 0.85rem;
+    color: #5B6E8C;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+/* Badges de compétences */
+.skill-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #EEF2FF, #E8EDF3);
+    color: #2C7A7B;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin: 4px 6px 4px 0;
+    border: 1px solid rgba(44, 122, 123, 0.2);
+    transition: all 0.2s ease;
+}
+.skill-badge:hover {
+    border-color: #2C7A7B;
+    transform: translateY(-1px);
+}
+.skills-container {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Style des onglets Streamlit personnalisé */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background: transparent;
+}
+.stTabs [data-baseweb="tab"] {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: #5B6E8C;
+}
+.stTabs [aria-selected="true"] {
+    color: #2C7A7B;
+    border-bottom-color: #2C7A7B;
+}
+
+.tip-chip:hover {
+    border-color: #2C7A7B;
+    color: #7CB8F0;
+
+}
 </style>
 """
 
 
-# --------------------------------------------------------------------------- #
-#  Fonction publique unique                                                   #
-# --------------------------------------------------------------------------- #
 def appliquer_style_et_sidebar(extra_css: str = "") -> None:
     """
     Injecte le CSS global + dessine la sidebar standard sur la page courante.
-
-    A appeler immediatement apres st.set_page_config() dans chaque page.
-
-    Args:
-        extra_css: CSS additionnel specifique a la page (optionnel).
-                   Exemple : des classes utilisees uniquement dans cette page.
-                   Le CSS passe ici est injecte APRES le CSS global dans le meme
-                   bloc <style>, evitant un second appel HTTP.
     """
-    # --- CSS "Pro Move" : Cacher l'interface de développement Streamlit ---
     hide_st_style = """
         #MainMenu {visibility: hidden;}
         header {visibility: hidden;}
@@ -226,34 +597,33 @@ def appliquer_style_et_sidebar(extra_css: str = "") -> None:
         [data-testid="stHeader"] {visibility: hidden;}
     """
 
-    # ── Injection CSS (global + pro move + additionnel fusionnés) ────────
     if extra_css:
-        # On injecte le code pour cacher Streamlit + le CSS spécifique de la page
         css_complet = _CSS_GLOBAL.replace("</style>", f"\n{hide_st_style}\n{extra_css}\n</style>")
     else:
-        # On injecte juste le code pour cacher Streamlit
         css_complet = _CSS_GLOBAL.replace("</style>", f"\n{hide_st_style}\n</style>")
 
     st.markdown(css_complet, unsafe_allow_html=True)
 
-    # ── Sidebar standard ─────────────────────────────────────────────────────
+    # Sidebar avec style raffiné
     with st.sidebar:
-        st.markdown("### 🧠 SmartRecruit AI")
-        st.markdown(
-            "<p style='color:#64748B;font-size:0.8rem;'>Hybrid GraphRAG Platform</p>",
-            unsafe_allow_html=True,
-        )
+        st.markdown("""
+        <div style="margin-bottom: 1.5rem;">
+            <span style="font-size: 1.4rem; font-weight: 700; background: linear-gradient(90deg, #5DC9C9, #C49B3A); -webkit-background-clip: text; background-clip: text; color: transparent; font-family: 'Space Grotesk', monospace;">SmartRecruit</span>
+            <span style="font-size: 0.7rem; font-weight: 500; color: #5DC9C9; display: block; margin-top: 4px;">Hybrid GraphRAG Platform</span>
+        </div>
+        """, unsafe_allow_html=True)
         st.divider()
 
-        st.markdown("**Navigation**")
-        st.page_link("app.py",               label="Dashboard",       icon="🏠")
-        st.page_link("pages/1_Recherche.py", label="Recherche IA",    icon="🔍")
-        st.page_link("pages/2_Vivier.py",    label="Vivier Talents",  icon="👥")
-        st.page_link("pages/3_Postes.py",    label="Fiches de Poste", icon="📋")
+        st.markdown("<span style='font-size: 0.7rem; font-weight: 600; color: #5DC9C9; letter-spacing: 0.1em;'>NAVIGATION</span>", unsafe_allow_html=True)
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.page_link("app.py", label="Dashboard", icon="📊")
+        st.page_link("pages/1_Recherche.py", label="Recherche IA", icon="🔍")
+        st.page_link("pages/2_Vivier.py", label="Vivier Talents", icon="👥")
+        st.page_link("pages/3_Postes.py", label="Fiches de Poste", icon="📋")
 
         st.divider()
         st.markdown(
-            "<p style='font-size:0.75rem;color:#475569;'>"
+            "<p style='font-size:0.7rem;color:#475569;'>"
             "Version 1.0.0-beta<br>"
             "Moteur : llama-3.3-70b-versatile<br>"
             "Pipeline : GraphRAG + ChromaDB"

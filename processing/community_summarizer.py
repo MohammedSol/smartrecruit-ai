@@ -310,11 +310,24 @@ class CommunitySummarizer:
                 attrs = self.manager.global_graph.nodes.get(node_id, {})
                 top_labels.append(attrs.get("label", node_id))
 
+            # ---------------------------------------------------------------- #
+            #  SPRINT C — Signature HMAC de l'intégrité                        #
+            #  Si integrity.py est absent → hmac_signature = "" (pas de sign) #
+            # ---------------------------------------------------------------- #
+            _hmac_sig = ""
+            try:
+                from security.integrity import sign as _sign
+                _hmac_sig = _sign(summary, "demo-secret")
+            except Exception:
+                pass  # Dégradation gracieuse : indexation sans signature
+            # ---------------------------------------------------------------- #
+
             metadata = {
-                "community_id":   comm_id,
-                "size":           len(community),
-                "top_members":    ", ".join(top_labels),
-                "summary_length": len(summary),
+                "community_id":    comm_id,
+                "size":            len(community),
+                "top_members":     ", ".join(top_labels),
+                "summary_length":  len(summary),
+                "hmac_signature":  _hmac_sig,   # Sprint C — vide si guard absent
             }
 
             # ── Upsert ChromaDB ──────────────────────────────────────────────

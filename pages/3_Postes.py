@@ -156,19 +156,7 @@ if st.button("🧠 Analyser le poste et trouver des candidats", type="primary"):
         
         st.success("Analyse terminee !")
         
-        # Sous-section 1 : Extraction des criteres (Layout en 3 colonnes)
-        st.markdown("### 🔍 Criteres Extraits (Mock)")
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            st.metric(label="Experience requise", value="3 a 5 ans")
-        
-        with col2:
-            st.metric(label="Localisation", value="Hybride / Paris")
-            
-        with col3:
-            st.info("Competences cles : Python, React, MongoDB, Kafka")
-            
+          
         # Sous-section 2 : Les Candidats (Matching RAG)
         st.divider()
         st.markdown("### 🎯 Top 3 des Candidats Recommandes")
@@ -178,7 +166,25 @@ if st.button("🧠 Analyser le poste et trouver des candidats", type="primary"):
             vectorstore = get_cv_vectorstore()
             
             # 2. Recherche vectorielle : On cherche plus large (k=10) pour pouvoir filtrer
-            docs_bruts = vectorstore.similarity_search(query=offre_texte, k=10)
+            # ---------------------------------------------------------------- #
+            #  SPRINT B — Filtre Multi-Tenant                                  #
+            #  Import lazy + try/except : si tenant_filter.py est absent,      #
+            #  on utilise {} (pas de filtre) = comportement original conserve. #
+            # ---------------------------------------------------------------- #
+            _tenant_filter = {}
+            try:
+                from security.tenant_filter import get_current_tenant, get_tenant_filter
+                _tenant_filter = get_tenant_filter(get_current_tenant())
+            except Exception:
+                pass  # Degradation gracieuse : recherche sans filtre tenant
+            # ---------------------------------------------------------------- #
+            #  FIN Sprint B                                                     #
+            # ---------------------------------------------------------------- #
+            docs_bruts = vectorstore.similarity_search(
+                query=offre_texte,
+                k=10,
+                filter=_tenant_filter if _tenant_filter else None,
+            )
             
             # FILTRE ARCHITECTURAL : On exclut les résumés de communauté GraphRAG
             docs_recommandes = []
