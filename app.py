@@ -27,7 +27,7 @@ from ui_utils import appliquer_style_et_sidebar
 # --------------------------------------------------------------------------- #
 st.set_page_config(
     page_title="SmartRecruit AI | Portail RH",
-    page_icon="🧠",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
@@ -251,9 +251,7 @@ st.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
 st.markdown("""
 <div style="text-align:center;padding:8px 0 24px;">
     <span style="font-size:0.78rem;color:#94A3B8;">
-        SmartRecruit AI &nbsp;·&nbsp; Projet de Fin d'Etudes &nbsp;·&nbsp;
-        Propulse par <strong style="color:#6366F1;">Hybrid GraphRAG</strong> &nbsp;·&nbsp;
-        Groq · ChromaDB · NetworkX · MongoDB
+        SmartRecruit &nbsp;
     </span>
 </div>
 """, unsafe_allow_html=True)

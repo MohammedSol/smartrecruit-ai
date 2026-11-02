@@ -50,7 +50,7 @@
 graph LR
     subgraph Docker Compose
         KAFKA[Kafka Broker :9092]
-        KRAFT[KRaft :9092]
+        ZOOKEEPER[Zookeeper :2181]
         MONGO[(MongoDB :27017)]
     end
 
@@ -80,7 +80,7 @@ graph LR
 
 | Composant | Conteneurisé ? | Raison |
 |---|---|---|
-| Kafka + KRaft | ✅ Oui | Installation native complexe et non reproductible. Docker est la norme. |
+| Kafka + Zookeeper | ✅ Oui | Installation native complexe et non reproductible. Docker est la norme. |
 | MongoDB | ✅ Oui | Identique sur les deux machines, données persistées via un volume Docker. |
 | ChromaDB | ❌ Non | Utilisé en mode *in-process* (librairie Python). Pas besoin de serveur séparé pour un PFA. Les données sont stockées dans un dossier local (`./chroma_data/`). |
 | Scripts Python | ❌ Non | Vous avez besoin d'un cycle de développement rapide (edit → run → debug). Un virtualenv partagé via `requirements.txt` suffit. |
@@ -93,8 +93,8 @@ graph LR
 │            Réseau Docker : smartrecruit-net  │
 │                                              │
 │   ┌──────────┐       ┌──────────┐           │
-│   │  KRaft   │◄──────│  Kafka   │           │
-│   │  :9092   │       │  :9092   │           │
+│   │  Zookeeper   │◄──────│  Kafka   │           │
+│   │  :2181   │       │  :9092   │           │
 │   └──────────┘       └──┬───────┘           │
 │                          │ Port exposé       │
 │   ┌──────────┐          │ localhost:9092     │
@@ -236,7 +236,7 @@ pip install -r requirements.txt
 ```
 smartrecruit-ai/
 │
-├── docker-compose.yml          # Infrastructure (Kafka, KRaft, MongoDB)
+├── docker-compose.yml          # Infrastructure (Kafka, Zookeeper, MongoDB)
 ├── requirements.txt            # Dépendances Python
 ├── .env                        # Variables d'env réelles
 ├── .gitignore
